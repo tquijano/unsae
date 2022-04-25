@@ -21,15 +21,16 @@ const insialState = {
 
 export const authReducer = ( state = insialState, action) => {
   switch (action.type) {
-    // case types.login:
-    //   return {
-    //     ...action.payload,
-    //     logged: true
-    //   }
-    // case types.logout:
-    //   return {
-    //     logged: false
-    //   }
+    case types.authLogin:
+      return {
+        ...state,
+        checking: false,
+        ...action.payload,
+      }
+    case types.authLogout:
+      return {
+        checking: false
+      }
   
     default:
       return state;

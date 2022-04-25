@@ -9,8 +9,8 @@ const Login = () => {
   const dispatch = useDispatch();
 
   const initialForm = {
-    username: 'estudiante',
-    password: '12345678'
+    username: 'Admin',
+    password: '12345'
   };
 
   const [ formValues, handleInputChange ] = useForm( initialForm );

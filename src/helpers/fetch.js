@@ -16,10 +16,7 @@ const fetchSinToken = ( endpoint, data, method='GET') => {
   } else {
     return fetch ( url, {
       method,
-      mode: 'no-cors',
       headers: {
-        // "Access-Control-Allow-Origin" : "*",
-        // "Access-Control-Allow-Credentials" : true,
         'Content-type': 'application/json'
       },
       body: JSON.stringify ( data )
