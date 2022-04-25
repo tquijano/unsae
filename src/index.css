@@ -27,3 +27,7 @@ code {
   font-family: Ancizar Sans, Ancizar Bold, Ancizar Extra Bold, source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+*{
+  box-sizing: border-box;
+}
