@@ -14,7 +14,8 @@ export const startLogin = ( username, password ) => {
 
     if (body.status){
       console.log(body.status)
-      localStorage.setItem('Usuario', body.usuario_registrado)
+      localStorage.setItem('Usuario', body.usuario_registrado);
+      localStorage.setItem('Tipo Usuario', body.tipoUsuario);
       dispatch( login ({
         uid: body.tipoUsuario,
         user: body.usuario_registrado
@@ -40,12 +41,34 @@ const login =( user ) =>({
   payload: user
 })
 
+export const startChecking =()=>{
+
+    const user = localStorage.getItem('Usuario');
+    const typeUser = localStorage.getItem('Tipo Usuario');
+    return async ( dispatch ) => {
+
+      if( typeUser !== 0){
+        dispatch( login ({
+          uid: typeUser,
+          user: user
+        }))
+      }else{
+        dispatch(checkinFinish())
+      }
+      // dispatch
+    }
+}
+
 export const startLogout =() =>{
   return ( dispatch ) => {
     localStorage.clear();
     dispatch( logout() );
   }
 }
+
+const checkinFinish = () => ({
+  type: types.authCheckingFinish
+})
 
 const logout = ( ) => ({
   type: types.authLogout
