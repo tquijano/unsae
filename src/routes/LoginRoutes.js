@@ -11,7 +11,7 @@ const LoginRoutes = () => {
   console.log('userType', uid)
 
   if ( uid ) {
-    switch (uid){
+    switch (String(uid)){
       case '1':
         return (
           <Routes>

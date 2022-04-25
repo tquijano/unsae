@@ -1,9 +1,6 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
 import { startLogout } from '../../actions/auth'
-// import { AuthContex } from '../../auth/authContext'
-import { types } from '../../types/types'
 import './Students.scss'
 
 const Students = () => {

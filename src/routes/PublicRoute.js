@@ -8,7 +8,7 @@ const PublicRoute = ({ children }) => {
   console.log(typeof(uid))
 
   if ( uid ) {
-    switch (uid){
+    switch (String(uid)){
       case '1':
         return <Navigate to='/Estudiante/'/>
       case '2':
