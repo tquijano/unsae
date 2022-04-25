@@ -11,7 +11,8 @@ const Students = () => {
 
   // const { user, dispatch } = useContext(AuthContex)
    
-  const {username} = useSelector(state => state.auth)
+  const {user} = useSelector(state => state.auth)
+  console.log(user)
   
 
   // const navigate = useNavigate();
@@ -35,7 +36,7 @@ const Students = () => {
     <br/>
     <br/>
     <br/>
-    <div>Hola {username} Bienvenido a la pagina estudiantes </div>
+    <div>Hola {user} Bienvenido a la pagina estudiantes </div>
     <button className="buttonHome"
       onClick={handleLogout}>
           Logout

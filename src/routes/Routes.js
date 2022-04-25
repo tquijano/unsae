@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { startChecking, startLogin } from '../actions/auth';
 import GeneralInfo from '../templates/generalInfo/GeneralInfo';
 import Home from '../templates/home/Home';
 import Legal from '../templates/legal/Legal';
@@ -10,9 +11,17 @@ import PublicRoute from './PublicRoute';
 
 const AppRoutes = () => {
 
-  const { checking } = useSelector( state => state.auth);
+  const dispatch = useDispatch();
+  const { checking, typeUser } = useSelector( state => state.auth);
 
-  console.log(checking)
+  useEffect(() => {
+    dispatch ( startChecking() );
+  }, [dispatch])
+  
+
+  if (checking) {
+    return <p>Un momento...</p>
+  }
 
   return (
     <BrowserRouter>
@@ -27,18 +36,13 @@ const AppRoutes = () => {
           }
         />
 
-        {/* <Route path="/Informacion-General" element={<GeneralInfo/>}/> */}
-        {/* <Route path="/Legal" element={<Laws/>}/> */}
-        
-
         <Route path="/*" 
           element={
-            // <PrivateRoute>
+            <PrivateRoute> 
               <LoginRoutes/>
-            // </PrivateRoute>
+            </PrivateRoute>
           }
         />
-        {/* <Route path="/*" element={<LoginRoutes/>}/> */}
       </Routes>
     </BrowserRouter>
   )
