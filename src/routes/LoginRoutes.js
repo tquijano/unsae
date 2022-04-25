@@ -6,17 +6,32 @@ import Teachers from '../templates/teachers/Teachers';
 
 const LoginRoutes = () => {
 
-  const userType = useSelector( state => state.auth)
+  const {uid} = useSelector( state => state.auth)
 
-  console.log('userType', userType)
+  console.log('userType', uid)
 
-  return (
-    <Routes>
-      <Route path="/Estudiante" element={<Students/>}/>
-      {/* <Route path="/Profesor" element={<Teachers/>}/>
-      <Route path="/Coordinador" element={<Coordinator/>}/> */}
-    </Routes>
-  )
+  if ( uid ) {
+    switch (uid){
+      case '1':
+        return (
+          <Routes>
+            <Route path="/Estudiante" element={<Students/>}/>
+          </Routes>
+        )
+      case '2':
+        return (
+          <Routes>
+            <Route path="/Profesor" element={<Teachers/>}/>
+          </Routes>
+        )
+      case '3':
+        return (
+          <Routes>
+            <Route path="/Coordinador" element={<Coordinator/>}/>
+          </Routes>
+        )
+    }
+  }
 }
 
 export default LoginRoutes

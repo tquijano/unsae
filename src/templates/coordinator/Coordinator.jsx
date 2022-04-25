@@ -3,7 +3,14 @@ import './Coordinator.scss'
 
 const Coordinator = () => {
   return (
-    <div>Coordinator</div>
+    <>
+      <br/>
+      <br/>
+
+      <br/>
+      <div>Coordinator</div>
+    
+    </>
   )
 }
 

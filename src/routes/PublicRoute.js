@@ -1,12 +1,26 @@
-// import React, { useContext } from 'react'
-// import { Navigate } from 'react-router-dom'
-// import { AuthContex } from '../auth/authContext'
+import React from 'react'
+import { useSelector } from 'react-redux';
+import { Navigate } from 'react-router-dom'
 
-// const PublicRoute = ({ children }) => {
-//   const {user} = useContext(AuthContex)
-//   return user.logged
-//     ? <Navigate to='/Estudiantes'/>
-//     : children
-// }
+const PublicRoute = ({ children }) => {
+  const { uid } = useSelector( state => state.auth);
+  console.log('uid', uid)
+  console.log(typeof(uid))
 
-// export default PublicRoute
+  if ( uid ) {
+    switch (uid){
+      case '1':
+        return <Navigate to='/Estudiante/'/>
+      case '2':
+        return <Navigate to='/Profesor/'/>
+      case '3':
+        return <Navigate to='/Coordinador/'/>
+    } 
+  }else{
+    console.log('Entre a else')
+    return children
+  }
+
+}
+
+export default PublicRoute

@@ -5,9 +5,12 @@ import { startChecking, startLogin } from '../actions/auth';
 import GeneralInfo from '../templates/generalInfo/GeneralInfo';
 import Home from '../templates/home/Home';
 import Legal from '../templates/legal/Legal';
+import CoordinatorRoutes from './CoordinatorRoutes';
 import LoginRoutes from './LoginRoutes';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
+import StudentRoutes from './StudenRoutes';
+import TeacherRoutes from './TeacherRoutes';
 
 const AppRoutes = () => {
 
@@ -30,11 +33,35 @@ const AppRoutes = () => {
         <Route path="/Informacion-Legal" element={<Legal/>}/>
         <Route path="/" 
           element={
-            // <PublicRoute>
+            <PublicRoute>
               <Home/>
-            // </PublicRoute>
+            </PublicRoute>
           }
         />
+
+        {/* <Route path="/Estudiante/*" 
+          element={
+            <PrivateRoute> 
+              <StudentRoutes/>
+            </PrivateRoute>
+          }
+        />
+
+        <Route path="/Profesor/*" 
+          element={
+            <PrivateRoute> 
+              <TeacherRoutes/>
+            </PrivateRoute>
+          }
+        />
+
+        <Route path="/Coordinador/*" 
+          element={
+            <PrivateRoute> 
+              <CoordinatorRoutes/>
+            </PrivateRoute>
+          }
+        /> */}
 
         <Route path="/*" 
           element={
@@ -43,6 +70,8 @@ const AppRoutes = () => {
             </PrivateRoute>
           }
         />
+
+        
       </Routes>
     </BrowserRouter>
   )
