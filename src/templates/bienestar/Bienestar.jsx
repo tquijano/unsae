@@ -1,10 +1,12 @@
 import React from 'react'
-import Register from '../../organism/register/Register'
+import RegisterStudent from '../../organism/register/registerStudent/RegisterStudent'
+import RegisterTeacher from '../../organism/register/registerTeacher/RegisterTeacher'
 
 const Bienestar = () => {
   return (
     <div>
-        <Register/>
+        <RegisterStudent/>
+        <RegisterTeacher/>
     </div>
   )
 }

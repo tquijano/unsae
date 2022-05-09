@@ -10,7 +10,7 @@ import CoordinatorRoutes from './CoordinatorRoutes';
 import LoginRoutes from './LoginRoutes';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
-import StudentRoutes from './StudenRoutes';
+import StudentRoutes from './StudentRoutes';
 import TeacherRoutes from './TeacherRoutes';
 
 const AppRoutes = () => {
@@ -33,13 +33,13 @@ const AppRoutes = () => {
         <Route path="/Informacion-General" element={<GeneralInfo/>}/>
         <Route path="/Informacion-Legal" element={<Legal/>}/>
         <Route path="/Bienestar" element={<Bienestar/>}/>
-        <Route path="/" 
+        {/* <Route path="/" 
           element={
             <PublicRoute>
               <Home/>
             </PublicRoute>
           }
-        />
+        /> */}
 
         {/* <Route path="/Estudiante/*" 
           element={
