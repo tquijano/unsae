@@ -1,10 +1,10 @@
 import React from 'react'
-import './Register.scss'
+import './RegisterStudent.scss'
 import { useDispatch } from 'react-redux';
-import { startLogin } from '../../actions/auth';
-import { useForm } from '../../hooks/useForm';
+import { startLogin } from '../../../actions/auth';
+import { useForm } from '../../../hooks/useForm';
 
-const Register = () => {
+const RegisterStudent = () => {
 
     const dispatch = useDispatch();
 
@@ -38,7 +38,7 @@ const Register = () => {
     }
     return (
         <div className='register-container'>
-            <h1>Registrar un nuevo usuario</h1>
+            <h1>Registrar un nuevo Estudiante</h1>
             <form className="register-container__form" onSubmit={handleRegister}>
                 <div className="form_group">
                     <label htmlFor="documento" className="form_label">Documento</label>
@@ -181,4 +181,4 @@ const Register = () => {
     )
 }
 
-export default Register
+export default RegisterStudent
