@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { startChecking, startLogin } from '../actions/auth';
+import Bienestar from '../templates/bienestar/Bienestar';
 import GeneralInfo from '../templates/generalInfo/GeneralInfo';
 import Home from '../templates/home/Home';
 import Legal from '../templates/legal/Legal';
@@ -31,6 +32,7 @@ const AppRoutes = () => {
       <Routes>
         <Route path="/Informacion-General" element={<GeneralInfo/>}/>
         <Route path="/Informacion-Legal" element={<Legal/>}/>
+        <Route path="/Bienestar" element={<Bienestar/>}/>
         <Route path="/" 
           element={
             <PublicRoute>
