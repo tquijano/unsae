@@ -80,6 +80,31 @@ export const startTeacherRegister = ( documento, nombres, apellidos, usuario_un,
   }
 }
 
+export const startBienestarRegister = ( documento, nombres, apellidos, usuario_un, estado, sexo  ) =>{
+  return async (dispatch) => {
+    console.log( documento, nombres, apellidos, usuario_un, estado, sexo )
+    // auth es el enpoint
+    const resp = await fetchSinToken( 'bienestar', { documento, nombres, apellidos, usuario_un, estado, sexo}, 'POST' );
+    // const resp = await fetchSinToken( '', { username, password}, 'GET' );
+
+    console.log(resp);
+    const body = await resp.json();
+    console.log(body);
+    // if (body.status){
+    //   console.log(body.status)
+    //   localStorage.setItem('Usuario', body.usuario_registrado);
+    //   localStorage.setItem('Tipo Usuario', body.tipoUsuario);
+    //   dispatch( login ({
+    //     uid: body.tipoUsuario,
+    //     user: body.usuario_registrado
+    //   }))
+    // } else {
+    //   // Swal.fire('Error', '404', 'error' )
+    //   console.log('No se realizo el registro')
+    // }
+  }
+}
+
 const login =( user ) =>({
   type: types.authLogin,
   payload: user
