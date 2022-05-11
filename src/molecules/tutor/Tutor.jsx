@@ -3,20 +3,21 @@ import { useDispatch } from "react-redux";
 import {
   getDataStudent,
   getDocentes,
-  tutorAsignement,
+  tutorAssignment,
 } from "../../actions/tutors";
 
 const Tutor = () => {
   const dispatch = useDispatch();
-  const [data, setData] = useState([]);
+  const [dataTutor, setDataTutor] = useState([]);
 
   useEffect(() => {
-    dispatch(getDocentes(setData));
-  }, [dispatch, setData]);
+    dispatch(getDocentes(setDataTutor));
+  }, [dispatch, setDataTutor]);
 
   const [studentValue, setStudentValue] = useState(123);
   const [teacherValue, setTeacherValue] = useState("");
-  const plan = "2321";
+  const [planValue, setPlanValue] = useState([]);
+
 
   const handleInputChange = (e) => {
     setStudentValue(e.target.value);
@@ -26,10 +27,15 @@ const Tutor = () => {
     setTeacherValue(e.target.value);
   };
 
+  const handleSelectPlanChange = (e) =>{
+    setPlanValue(e.target.value);
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(getDataStudent(studentValue));
+    dispatch(getDataStudent(studentValue, setPlanValue));
     console.log("lo subi ", studentValue);
+    console.log(planValue);
   };
 
   const handleSend = (e) => {
@@ -38,7 +44,7 @@ const Tutor = () => {
     console.log("Envie lo datos");
   };
 
-  console.log(data[0]);
+  // console.log(dataTutor[0]);
   return (
     <div>
       <p>Buscar Estudiante</p>
@@ -52,7 +58,7 @@ const Tutor = () => {
           onChange={handleInputChange}
         />
       </form>
-      {data[0] ? (
+      {dataTutor[0] ? (
         <>
           <select
             name='select'
@@ -60,7 +66,7 @@ const Tutor = () => {
             onChange={handleSelectChange}
           >
             <option> Selecciona un docente</option>
-            {data[0].map((teacher) => (
+            {dataTutor[0].map((teacher) => (
               <option value={teacher.documento} key={teacher.documento}>
                 {" "}
                 {teacher.nombres}{" "}
@@ -72,9 +78,28 @@ const Tutor = () => {
         <></>
       )}
 
+      {planValue[0] ?
+        <>
+          <select
+            name='select'
+            // value={planValue}
+            onChange={handleSelectPlanChange}
+          >
+            <option>Seleccionar un plan</option>
+            {planValue[0].map((plan) => (
+              <option value={plan.codigo} key={plan.codigo}>
+                {" "}
+                {plan.codigo}{" "}
+              </option>
+            ))}
+          </select>
+        </> :
+        <></>
+      }
+
       <p>
         El docente {teacherValue} se asignara al estudiante {studentValue} con
-        el plan {plan}
+        el plan {}
       </p>
       <button className='buttonTutor' onClick={handleSend}>
         Enviar informacion
