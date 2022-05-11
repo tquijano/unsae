@@ -9,6 +9,7 @@ import {
 const Tutor = () => {
   const dispatch = useDispatch();
   const [dataTutor, setDataTutor] = useState([]);
+  const [dataPlan, setDataPlan] = useState([]);
 
   useEffect(() => {
     dispatch(getDocentes(setDataTutor));
@@ -16,8 +17,7 @@ const Tutor = () => {
 
   const [studentValue, setStudentValue] = useState(123);
   const [teacherValue, setTeacherValue] = useState("");
-  const [planValue, setPlanValue] = useState([]);
-
+  const [planValue, setPlanValue] = useState(142);
 
   const handleInputChange = (e) => {
     setStudentValue(e.target.value);
@@ -27,20 +27,19 @@ const Tutor = () => {
     setTeacherValue(e.target.value);
   };
 
-  const handleSelectPlanChange = (e) =>{
+  const handleSelectPlanChange = (e) => {
     setPlanValue(e.target.value);
-  }
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(getDataStudent(studentValue, setPlanValue));
+    dispatch(getDataStudent(studentValue, setDataPlan));
     console.log("lo subi ", studentValue);
-    console.log(planValue);
   };
 
   const handleSend = (e) => {
     e.preventDefault();
-    // dispatch(tutorAsignement(studentValue, teacherValue, plan));
+    dispatch(tutorAssignment(studentValue, teacherValue, planValue));
     console.log("Envie lo datos");
   };
 
@@ -78,28 +77,29 @@ const Tutor = () => {
         <></>
       )}
 
-      {planValue[0] ?
+      {dataPlan[0] ? (
         <>
           <select
             name='select'
-            // value={planValue}
+            value={planValue}
             onChange={handleSelectPlanChange}
           >
             <option>Seleccionar un plan</option>
-            {planValue[0].map((plan) => (
+            {dataPlan[0].map((plan) => (
               <option value={plan.codigo} key={plan.codigo}>
                 {" "}
                 {plan.codigo}{" "}
               </option>
             ))}
           </select>
-        </> :
+        </>
+      ) : (
         <></>
-      }
+      )}
 
       <p>
         El docente {teacherValue} se asignara al estudiante {studentValue} con
-        el plan {}
+        el plan {planValue}
       </p>
       <button className='buttonTutor' onClick={handleSend}>
         Enviar informacion

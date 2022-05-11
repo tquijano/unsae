@@ -15,9 +15,11 @@ export const startLogin = ( username, password ) => {
     if (body.status){
       console.log(body.status)
       localStorage.setItem('Usuario', body.usuario_registrado);
+      localStorage.setItem('Identificacion', body.documento);
       localStorage.setItem('Tipo Usuario', body.tipoUsuario);
       dispatch( login ({
         uid: body.tipoUsuario,
+        id: body.documento,
         user: body.usuario_registrado
       }))
     } else {
@@ -114,11 +116,13 @@ export const startChecking =()=>{
 
     const user = localStorage.getItem('Usuario');
     const typeUser = localStorage.getItem('Tipo Usuario');
+    const id = localStorage.getItem('Identificacion')
     return async ( dispatch ) => {
 
       if( typeUser !== 0){
         dispatch( login ({
           uid: typeUser,
+          id: id,
           user: user
         }))
       }else{

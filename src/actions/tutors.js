@@ -16,27 +16,44 @@ export const getDocentes = (setDataTutor) => {
 
 }
 
-export const getDataStudent = (id_estudiante, setPlanValue) => {
+export const getDataStudent = (id_estudiante, setDataPlanValue) => {
     return async(dispatch) => {
         const resp = await fetchSinToken(`bienestar/planes?documentoEstudiante=${id_estudiante}`);
         console.log(resp);
         const body = await resp.json();
-        console.log(body);
+        console.log('body',body);
         if (body) {
-            setPlanValue(datasP => [...datasP, body])
+            setDataPlanValue(datasP => [...datasP, body])
         }
     }
 }
 
-export const tutorAssignment = (student, teacher, plan) => {
+export const tutorAssignment = (documentoEstudiante, documentoDocente, codigoPlan) => {
     return async(dispatch) => {
-        console.log(student, teacher)
+        console.log(documentoEstudiante, documentoDocente, codigoPlan)
             // auth es el enpoint
-        const resp = await fetchSinToken('asignamiento', { student, teacher }, 'POST');
+        const resp = await fetchSinToken('ingresoTutor', { documentoEstudiante, documentoDocente, codigoPlan }, 'POST');
 
         console.log(resp);
         const body = await resp.json();
         console.log(body);
 
     }
+}
+
+export const searchStudent = ( teacher, setDataStudent ) =>{
+  return async (dispatch) => {
+    console.log( teacher )
+    // auth es el enpoint
+    const resp = await fetchSinToken( `ingresoTutor?documentoDocente=${teacher}` );
+
+    console.log(resp);
+    const body = await resp.json();
+    console.log(body);
+    if (body) {
+      setDataStudent(datas => [...datas, body])
+    } else {
+        console.log('Algo ta mal')
+    }
+  }
 }
