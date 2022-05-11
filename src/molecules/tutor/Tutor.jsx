@@ -32,19 +32,19 @@ const Tutor = () => {
   console.log(data[0]);
   return (
     <div>
+      <p>Buscar Estudiante</p>
+      <form onSubmit={handleSubmit}>
+        <input
+          id='estudiante'
+          type='text'
+          placeholder=' Ingresa a tu estudiante '
+          name='documento'
+          value={studentValue}
+          onChange={handleInputChange}
+        />
+      </form>
       {data[0] ?
         <>
-          <p>Buscar Estudiante</p>
-          <form onSubmit={handleSubmit}>
-            <input
-              id='estudiante'
-              type='text'
-              placeholder=' Ingresa a tu estudiante '
-              name='documento'
-              value={studentValue}
-              onChange={handleInputChange}
-            />
-          </form>
           <select name='select'>
             {data[0].map((teacher) => (
               <option value={teacher.documento} key={teacher.documento}> {teacher.nombres} </option>
