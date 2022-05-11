@@ -4,9 +4,11 @@ import { getDataStudent, getDocentes } from "../../actions/tutors";
 
 const Tutor = () => {
   const dispatch = useDispatch();
+  const [data, setData] = useState([]);
   useEffect(() => {
-    dispatch(getDocentes());
-  }, [dispatch]);
+    dispatch(getDocentes(setData));
+  }, [dispatch, setData]);
+
 
   const teachers = [
     { documento: "12354", nombres: "lola" },
@@ -26,25 +28,33 @@ const Tutor = () => {
 
     console.log("lo subi ", studentValue);
   };
+
+  console.log(data[0]);
   return (
-    <>
-      <p>Buscar Estudiante</p>
-      <form onSubmit={handleSubmit}>
-        <input
-          id='estudiante'
-          type='text'
-          placeholder=' Ingresa a tu estudiante '
-          name='documento'
-          value={studentValue}
-          onChange={handleInputChange}
-        />
-      </form>
-      <select name='select'>
-        {teachers.map((teacher) => (
-          <option value={teacher.documento}> {teacher.nombres} </option>
-        ))}
-      </select>
-    </>
+    <div>
+      {data[0] ?
+        <>
+          <p>Buscar Estudiante</p>
+          <form onSubmit={handleSubmit}>
+            <input
+              id='estudiante'
+              type='text'
+              placeholder=' Ingresa a tu estudiante '
+              name='documento'
+              value={studentValue}
+              onChange={handleInputChange}
+            />
+          </form>
+          <select name='select'>
+            {data[0].map((teacher) => (
+              <option value={teacher.documento} key={teacher.documento}> {teacher.nombres} </option>
+            ))}
+          </select>
+        </>
+        :
+        <></>
+      }
+    </div>
   );
 };
 
