@@ -11,3 +11,12 @@ export const getDocentes = ()=>{
 
 }
 
+export const getDataStudent = ( id_estudiante )=>{
+  return async (dispatch)=>{
+    const resp = await fetchSinToken( `bienestar/planes?documentoEstudiante=${id_estudiante}` );
+    console.log(resp);
+    const body = await resp.json();
+    console.log(body);
+  }
+
+}
