@@ -25,3 +25,16 @@ export const getDataStudent = (id_estudiante) => {
     }
 
 }
+
+export const tutorAsignement = ( student, teacher, plan  ) =>{
+  return async (dispatch) => {
+    console.log( student, teacher )
+    // auth es el enpoint
+    const resp = await fetchSinToken( 'asignamiento', { student, teacher}, 'POST' );
+
+    console.log(resp);
+    const body = await resp.json();
+    console.log(body);
+
+  }
+}
