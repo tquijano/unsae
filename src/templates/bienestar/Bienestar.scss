@@ -1,0 +1,9 @@
+.bienestar{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  &_registro{
+    display: flex;
+    justify-content: space-around;
+  }
+}

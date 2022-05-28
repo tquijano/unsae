@@ -32,28 +32,16 @@ export const startLogin = ( username, password ) => {
   
 }
 
-export const startStudentRegister = ( documento, nombres, apellidos, usuario_un, estado, sexo, id_tipo_usuario, codigo, fecha_ingreso, cursando, documento_nacional  ) =>{
+export const startStudentRegister = ( documento, nombres, apellidos, usuario_un, estado, sexo, codigo, fecha_ingreso, cursando, documento_nacional, id_tipo_usuario  ) =>{
   return async (dispatch) => {
-    console.log( documento, nombres, apellidos, usuario_un, estado, sexo, id_tipo_usuario, codigo, fecha_ingreso, cursando, documento_nacional )
+    console.log( documento, nombres, apellidos, usuario_un, estado, sexo, codigo, fecha_ingreso, cursando, documento_nacional, id_tipo_usuario )
     // auth es el enpoint
-    const resp = await fetchSinToken( 'ingresoEstudiante', { documento, nombres, apellidos, usuario_un, estado, sexo, id_tipo_usuario, codigo, fecha_ingreso, cursando, documento_nacional}, 'POST' );
+    const resp = await fetchSinToken( 'ingresoEstudiante', { documento, nombres, apellidos, usuario_un, estado, sexo, codigo, fecha_ingreso, cursando, documento_nacional, id_tipo_usuario}, 'POST' );
     // const resp = await fetchSinToken( '', { username, password}, 'GET' );
 
     console.log(resp);
     const body = await resp.json();
     console.log(body);
-    // if (body.status){
-    //   console.log(body.status)
-    //   localStorage.setItem('Usuario', body.usuario_registrado);
-    //   localStorage.setItem('Tipo Usuario', body.tipoUsuario);
-    //   dispatch( login ({
-    //     uid: body.tipoUsuario,
-    //     user: body.usuario_registrado
-    //   }))
-    // } else {
-    //   // Swal.fire('Error', '404', 'error' )
-    //   console.log('No se realizo el registro')
-    // }
   }
 }
 
@@ -61,24 +49,13 @@ export const startTeacherRegister = ( documento, nombres, apellidos, usuario_un,
   return async (dispatch) => {
     console.log( documento, nombres, apellidos, usuario_un, estado, sexo, id_tipo_usuario, id_departamento )
     // auth es el enpoint
-    const resp = await fetchSinToken( 'docente', { documento, nombres, apellidos, usuario_un, estado, sexo, id_tipo_usuario, id_departamento}, 'POST' );
+    const resp = await fetchSinToken( 'ingresoDocente', { documento, nombres, apellidos, usuario_un, estado, sexo, id_tipo_usuario, id_departamento}, 'POST' );
     // const resp = await fetchSinToken( '', { username, password}, 'GET' );
 
     console.log(resp);
     const body = await resp.json();
     console.log(body);
-    // if (body.status){
-    //   console.log(body.status)
-    //   localStorage.setItem('Usuario', body.usuario_registrado);
-    //   localStorage.setItem('Tipo Usuario', body.tipoUsuario);
-    //   dispatch( login ({
-    //     uid: body.tipoUsuario,
-    //     user: body.usuario_registrado
-    //   }))
-    // } else {
-    //   // Swal.fire('Error', '404', 'error' )
-    //   console.log('No se realizo el registro')
-    // }
+
   }
 }
 
@@ -86,24 +63,13 @@ export const startBienestarRegister = ( documento, nombres, apellidos, usuario_u
   return async (dispatch) => {
     console.log( documento, nombres, apellidos, usuario_un, estado, sexo )
     // auth es el enpoint
-    const resp = await fetchSinToken( 'bienestar', { documento, nombres, apellidos, usuario_un, estado, sexo}, 'POST' );
+    const resp = await fetchSinToken( 'ingresoBienestar', { documento, nombres, apellidos, usuario_un, estado, sexo}, 'POST' );
     // const resp = await fetchSinToken( '', { username, password}, 'GET' );
 
     console.log(resp);
     const body = await resp.json();
     console.log(body);
-    // if (body.status){
-    //   console.log(body.status)
-    //   localStorage.setItem('Usuario', body.usuario_registrado);
-    //   localStorage.setItem('Tipo Usuario', body.tipoUsuario);
-    //   dispatch( login ({
-    //     uid: body.tipoUsuario,
-    //     user: body.usuario_registrado
-    //   }))
-    // } else {
-    //   // Swal.fire('Error', '404', 'error' )
-    //   console.log('No se realizo el registro')
-    // }
+
   }
 }
 

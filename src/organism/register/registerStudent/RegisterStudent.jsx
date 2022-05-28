@@ -30,11 +30,11 @@ const RegisterStudent = () => {
     usuario_un,
     estado,
     sexo,
-    id_tipo_usuario,
     codigo,
     fecha_ingreso,
     cursando,
     documento_nacional,
+    id_tipo_usuario,
   } = formStudentValues;
 
   const handleRegister = (e) => {
@@ -49,11 +49,11 @@ const RegisterStudent = () => {
         usuario_un,
         estado,
         sexo,
-        id_tipo_usuario,
         codigo,
         fecha_ingreso,
         cursando,
-        documento_nacional
+        documento_nacional,
+        id_tipo_usuario
       )
     );
   };
@@ -152,21 +152,6 @@ const RegisterStudent = () => {
           />
         </div>
         <div className='form_group'>
-          <label htmlFor='id_tipo_usuario' className='form_label'>
-            Tipo de Usuario
-          </label>
-          <input
-            id='id_tipo_usuario'
-            type='text'
-            className='form_input'
-            placeholder=''
-            name='id_tipo_usuario'
-            value={id_tipo_usuario}
-            onChange={handleInputChange}
-            required
-          />
-        </div>
-        <div className='form_group'>
           <label htmlFor='codigo' className='form_label'>
             Codigo
           </label>
@@ -222,6 +207,21 @@ const RegisterStudent = () => {
             placeholder=''
             name='documento_nacional'
             value={documento_nacional}
+            onChange={handleInputChange}
+            required
+          />
+        </div>
+        <div className='form_group'>
+          <label htmlFor='id_tipo_usuario' className='form_label'>
+            Tipo de Usuario
+          </label>
+          <input
+            id='id_tipo_usuario'
+            type='text'
+            className='form_input'
+            placeholder=''
+            name='id_tipo_usuario'
+            value={id_tipo_usuario}
             onChange={handleInputChange}
             required
           />

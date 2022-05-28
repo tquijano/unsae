@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
+import Bienestar from '../templates/bienestar/Bienestar';
 import Coordinator from '../templates/coordinator/Coordinator';
 import Students from '../templates/students/Students';
 import Teachers from '../templates/teachers/Teachers';
@@ -25,6 +26,12 @@ const LoginRoutes = () => {
           </Routes>
         )
       case '3':
+        return (
+          <Routes>
+            <Route path="/Bienestar/" element={<Bienestar/>}/>
+          </Routes>
+        )
+      case '4':
         return (
           <Routes>
             <Route path="/Coordinador" element={<Coordinator/>}/>

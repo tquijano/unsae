@@ -57,3 +57,21 @@ export const searchStudent = ( teacher, setDataStudent ) =>{
     }
   }
 }
+
+export const searchTeacher = ( student, setDataTeacher ) =>{
+    return async (dispatch) => {
+      console.log( student )
+      // auth es el enpoint
+      const resp = await fetchSinToken(  `ingresoTutor?documentoEstudiante=${student}`);
+  
+      console.log(resp);
+      const body = await resp.json();
+      console.log(body);
+      if (body) {
+        setDataTeacher(datas => [...datas, body])
+      } else {
+          console.log('Algo ta mal')
+      }
+  
+    }
+  }

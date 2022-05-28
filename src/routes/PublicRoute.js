@@ -14,6 +14,8 @@ const PublicRoute = ({ children }) => {
       case '2':
         return <Navigate to='/Profesor/'/>
       case '3':
+        return <Navigate to='/Bienestar/'/>
+      case '4':
         return <Navigate to='/Coordinador/'/>
     } 
   }else{

@@ -32,7 +32,6 @@ const AppRoutes = () => {
       <Routes>
         <Route path="/Informacion-General" element={<GeneralInfo/>}/>
         <Route path="/Informacion-Legal" element={<Legal/>}/>
-        <Route path="/Bienestar" element={<Bienestar/>}/>
         <Route path="/" 
           element={
             <PublicRoute>
