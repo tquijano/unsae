@@ -6,6 +6,8 @@ import RegisterTeacher from "../../organism/register/registerTeacher/RegisterTea
 import { useDispatch } from "react-redux";
 import { startLogout } from "../../actions/auth";
 import "./Bienestar.scss";
+import Remission from "../../organism/remission/Remission";
+import ViewObservation from "../../organism/ observation/viewObservation/ViewObservation";
 
 const Bienestar = () => {
   const dispatch = useDispatch();
@@ -27,6 +29,8 @@ const Bienestar = () => {
         <RegisterTeacher />
         <RegisterBienestar />
       </div>
+      <ViewObservation/>
+      <Remission/>
       <button className='buttonHome' onClick={handleLogout}>
         Logout
       </button>

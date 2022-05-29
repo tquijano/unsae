@@ -25,8 +25,6 @@ export const startLogin = ( username, password ) => {
       }))
     } else {
       Swal.fire({title:'QUsuario o contraseña incorrectos', icon: 'error' ,confirmButtonColor: '#005068'} )
-      console.log('Usuario o contraseña incorrectos')
-      // TODO: HACER MODAL EN CASO DE ERROR
     }
 
   }
