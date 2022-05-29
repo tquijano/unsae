@@ -1,3 +1,4 @@
+import Swal from "sweetalert2";
 import { fetchSinToken } from "../helpers/fetch"
 import { types } from "../types/types";
 
@@ -23,7 +24,7 @@ export const startLogin = ( username, password ) => {
         user: body.usuario_registrado
       }))
     } else {
-      // Swal.fire('Error', '404', 'error' )
+      Swal.fire({title:'QUsuario o contraseña incorrectos', icon: 'error' ,confirmButtonColor: '#005068'} )
       console.log('Usuario o contraseña incorrectos')
       // TODO: HACER MODAL EN CASO DE ERROR
     }

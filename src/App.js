@@ -4,6 +4,7 @@ import { Provider } from 'react-redux'
 // import { authReducer } from './auth/authReducer'
 import AppRoutes from './routes/Routes'
 import { store } from './store/store'
+import './App.scss'
 
 const App = () => {
 
