@@ -1,0 +1,8 @@
+.viewInformation_button{
+  border: none;
+  color: #7DCFCA;
+  background: white;
+  &:focus{
+    outline: none;
+  }
+}
