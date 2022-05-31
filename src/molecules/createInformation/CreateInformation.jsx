@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import Swal from "sweetalert2";
+import "./CreateInformation.scss";
 
 const CreateInformation = ({ data }) => {
+  //En textInfo esta lo que se creo
   const [textInfo, setTextInfo] = useState("");
   const handleCreate = async () => {
     const { value: text } = await Swal.fire({
@@ -21,10 +23,9 @@ const CreateInformation = ({ data }) => {
     }
   };
   return (
-    <div>
-      <button onClick={handleCreate}>Crear Observacion</button>
-      <h1>{textInfo ? textInfo : ""}</h1>
-    </div>
+    <button className='createInformation_button' onClick={handleCreate}>
+      Crear Observacion
+    </button>
   );
 };
 
