@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Tutor from "../../molecules/tutor/Tutor";
 import RegisterBienestar from "../../organism/register/registerBienestar/RegisterBienestar";
 import RegisterStudent from "../../organism/register/registerStudent/RegisterStudent";
@@ -7,33 +7,35 @@ import { useDispatch } from "react-redux";
 import { startLogout } from "../../actions/auth";
 import "./Bienestar.scss";
 import Remission from "../../organism/remission/Remission";
-import ViewObservation from "../../organism/ observation/viewObservation/ViewObservation";
+import Observation from "../../organism/ observation/Observation";
+import Navbar from "../../molecules/navbar/Navbar";
+import ButtonLogout from "../../atoms/buttons/buttonLogout/ButtonLogout";
 
 const Bienestar = () => {
-  const dispatch = useDispatch();
-  const handleLogout = () => {
-    dispatch(startLogout());
-  };
+  const [tabSelected, setTabSelected] = useState("0");
   return (
     <div className='bienestar'>
-      <br />
-      <br />
-      <br />
-      <br />
-      <h1> Asignar tutor </h1>
-      <Tutor />
-      <br />
-      <br />
-      <div className='bienestar_registro'>
-        <RegisterStudent />
-        <RegisterTeacher />
-        <RegisterBienestar />
+      <div className='bienestar_navbar'>
+        <Navbar setTabSelected={setTabSelected} />
       </div>
-      <ViewObservation/>
-      <Remission/>
-      <button className='buttonHome' onClick={handleLogout}>
-        Logout
-      </button>
+      <div className='container_bienestar'>
+        {tabSelected === "0" && <Observation />}
+        {tabSelected === "1" && <Remission />}
+        {tabSelected === "2" && (
+          <>
+            <h1> Asignar tutor </h1>
+            <Tutor />
+          </>
+        )}
+        {tabSelected === "3" && (
+          <div className='bienestar_registro'>
+            <RegisterStudent />
+            <RegisterTeacher />
+            <RegisterBienestar />
+          </div>
+        )}
+        <ButtonLogout />
+      </div>
     </div>
   );
 };

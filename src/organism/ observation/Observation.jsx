@@ -1,15 +1,17 @@
 import React, { useState } from "react";
-import Searcher from "../../../molecules/searcher/Searcher";
-import CreateInformation from "../../../molecules/createInformation/CreateInformation";
-import Students from "../../../templates/students/Students";
-import "./ViewObservation.scss";
-import ViewInformation from "../../../molecules/viewInformation/ViewInformation";
+import Searcher from "../../molecules/searcher/Searcher";
+import CreateInformation from "../../molecules/createInformation/CreateInformation";
+import "./Observation.scss";
+import ViewInformation from "../../molecules/viewInformation/ViewInformation";
+import { useSelector } from "react-redux";
+import Saludo from "../../assets/img/ola.gif";
 
-const ViewObservation = () => {
+const Observation = () => {
+  const { user } = useSelector((state) => state.auth);
   const [searcher, setSearcher] = useState("");
   const Students = [
     {
-      nombre: "estudiante 1",
+      nombre: "tania Gissell quijano gonzalez",
       documento: 1234589,
       plan: 145,
       observaciones: "Crack eres el mejor 1",
@@ -35,9 +37,14 @@ const ViewObservation = () => {
   ];
 
   return (
-    <div>
-      ViewObservation
-      <Searcher setSearcher={setSearcher} />
+    <div className='observation'>
+      <div className='observation_header'>
+        <div className='observation_header--title'>
+          <h1>Bienvenido {user} </h1>
+          <img className='observation_img' src={Saludo} />
+        </div>
+        <Searcher setSearcher={setSearcher} />
+      </div>
       <table>
         <thead>
           <tr>
@@ -70,4 +77,4 @@ const ViewObservation = () => {
   );
 };
 
-export default ViewObservation;
+export default Observation;

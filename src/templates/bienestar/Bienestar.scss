@@ -1,9 +1,26 @@
 .bienestar{
   display: flex;
+}
+.bienestar_registro{
+  // display: flex;
+  // flex-direction: column;
+  // display: flex;
+  // flex-direction: column;
+  // align-items: center;
+  // &_registro{
+  //   display: flex;
+  //   justify-content: space-around;
+  // }
+}
+.container_bienestar{
+  flex: 80%;
+  display: flex;
   flex-direction: column;
-  align-items: center;
-  &_registro{
-    display: flex;
-    justify-content: space-around;
-  }
+  padding: 3% 0;
+ align-items: center;
+  // padding: 3% 30% 3% 5%;
+}
+.bienestar_navbar{
+  background: #F5F7F9;
+  flex: 20%;
 }

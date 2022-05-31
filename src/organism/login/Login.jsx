@@ -8,7 +8,7 @@ const Login = () => {
   const dispatch = useDispatch();
 
   const initialForm = {
-    username: "profeh",
+    username: "Admin", //profeh
     password: "12345",
   };
 
