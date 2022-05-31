@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import "./Searcher.scss";
+import Icon from "../../assets/img/search.png";
 
 const Searcher = ({ setSearcher }) => {
   const [inputValue, setInputValue] = useState("");
@@ -13,8 +15,15 @@ const Searcher = ({ setSearcher }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input type='text' value={inputValue} onChange={handleInputChange} />
+    <form className='searcher_form' onSubmit={handleSubmit}>
+      <input
+        className='searcher_input'
+        type='text'
+        value={inputValue}
+        onChange={handleInputChange}
+        placeholder='Buscar Documento'
+      />
+      <img className='searcher_img' src={Icon} />
     </form>
   );
 };
