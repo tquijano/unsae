@@ -31,9 +31,10 @@ export const getStudentsTeacher = (documento_docente, setDataRemissionTeacher) =
 
 }
 export const getRemissionsTeacher= (documento_docente, setDataRemission) => {
+  console.log('documento remision docente aqui', documento_docente)
   return async(dispatch) => {
       const resp = await fetchSinToken(`remisionesDocente/estudiante?documentoDocente=${documento_docente}`);
-      console.log(resp);
+      console.log('documento remision docente aqui',resp);
       const body = await resp.json();
       console.log('remisiones profe',body);
       if (body) {

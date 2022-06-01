@@ -20,9 +20,8 @@ const Remission = ({ type }) => {
 
   useEffect(() => {
     type === "Docentes"
-      ? cardSelected === 0
-        ? dispatch(getStudentsTeacher(id, setDataRemissionsTeacher))
-        : dispatch(getRemissionsTeacher(id, setDataRemissions))
+      ? dispatch(getRemissionsTeacher(id, setDataRemissions)) &&
+        dispatch(getStudentsTeacher(id, setDataRemissionsTeacher))
       : dispatch(getRemissions(setDataRemissions));
   }, [dispatch, setDataRemissions]);
   console.log("data observaciones", dataRemissions);
