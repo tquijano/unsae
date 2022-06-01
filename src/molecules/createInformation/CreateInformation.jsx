@@ -1,9 +1,13 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import Swal from "sweetalert2";
+import { createObservation } from "../../actions/observations";
 import "./CreateInformation.scss";
 
 const CreateInformation = ({ data }) => {
   //En textInfo esta lo que se creo
+  const dispatch = useDispatch();
+  console.log("data create", data);
   const [textInfo, setTextInfo] = useState("");
   const handleCreate = async () => {
     const { value: text } = await Swal.fire({
@@ -19,7 +23,14 @@ const CreateInformation = ({ data }) => {
     if (text) {
       console.log("data", data);
       setTextInfo(text);
-      Swal.fire("Observacion exitosamente creada");
+      dispatch(
+        createObservation(
+          data.documento_estudiante,
+          data.documento_docente,
+          data.codigo_plan,
+          text
+        )
+      );
     }
   };
   return (

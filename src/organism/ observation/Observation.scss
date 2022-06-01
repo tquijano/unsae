@@ -27,35 +27,43 @@
   }
   thead{
     border-bottom: 2px solid #E6ECEF;
-    th{
-      font-size: 18px;
-      width: 150px;
-      // text-align: center;
-      height: 30px;
-      &:nth-child(1){
-        text-align: start;
-        width: 300px;
-      }
-      &:nth-child(3){
-        width: 100px;
-      }
+    .observation-th--docentes{
+
+        font-size: 18px;
+        width: 200px;
+        height: 30px;
+        &:nth-child(1){
+          text-align: start;
+          width: 300px;
+        }
+        &:nth-child(3){
+          width: 100px;
+        }
+      
+    }
+    .observation-th--bienestar{
+        font-size: 18px;
+        width: 200px;
+        height: 30px;
+        // background: blue;
+        &:nth-child(1), &:nth-child(3){
+        // background: red;
+          
+          text-align: start;
+          width: 280px;
+        }
+        &:nth-child(5){
+          width: 150px;
+        }
     }
   }
   tbody{
-    tr{
-      // border-bottom: 1PX SOLID rgb(226, 224, 224);
-        // background: rebeccapurple;
-    }
-      td{
+    td{
       text-transform: capitalize;
       font-size: 18px;
       box-sizing: border-box;
       padding: 15px 0px;
       height: 40px;
-      // text-align: center;
-      &:nth-child(1){
-        text-align: start;
-      }
     }
 
   }

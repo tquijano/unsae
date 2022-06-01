@@ -1,40 +1,38 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+
 import Searcher from "../../molecules/searcher/Searcher";
 import CreateInformation from "../../molecules/createInformation/CreateInformation";
 import "./Observation.scss";
 import ViewInformation from "../../molecules/viewInformation/ViewInformation";
 import { useSelector } from "react-redux";
 import Saludo from "../../assets/img/ola.gif";
+import { getObservations } from "../../actions/observations";
 
-const Observation = () => {
+const Observation = ({ type }) => {
+  const Docentes = [
+    "Nombre Estudiante",
+    "Documento",
+    "plan",
+    "Ver Observaciones",
+    "Crear Observaciones",
+  ];
+  const Bienestar = [
+    "Nombre Docente",
+    "Documento Docente",
+    "Nombre Estudiante",
+    "Documento Estudiante",
+    "plan Estudiante",
+    "Ver Observaciones",
+  ];
+  const dispatch = useDispatch();
+  const [dataObservations, setDataObservations] = useState([]);
+  useEffect(() => {
+    dispatch(getObservations(setDataObservations));
+  }, [dispatch, setDataObservations]);
+  console.log("data observaciones", dataObservations);
   const { user } = useSelector((state) => state.auth);
   const [searcher, setSearcher] = useState("");
-  const Students = [
-    {
-      nombre: "tania Gissell quijano gonzalez",
-      documento: 1234589,
-      plan: 145,
-      observaciones: "Crack eres el mejor 1",
-    },
-    {
-      nombre: "estudiante 2",
-      documento: 1234567,
-      plan: 145,
-      observaciones: "Crack eres el mejor 2",
-    },
-    {
-      nombre: "estudiante 2",
-      documento: 6712345,
-      plan: 145,
-      observaciones: "Crack eres el mejor 3",
-    },
-    {
-      nombre: "estudiante 3",
-      documento: 1238945,
-      plan: 145,
-      observaciones: "Crack eres el mejor 4",
-    },
-  ];
 
   return (
     <div className='observation'>
@@ -48,30 +46,60 @@ const Observation = () => {
       <table>
         <thead>
           <tr>
-            <th>Nombre Estudiante</th>
+            {type === "Docentes"
+              ? Docentes.map((title) => (
+                  <th className='observation-th--docentes'> {title} </th>
+                ))
+              : Bienestar.map((title) => (
+                  <th className='observation-th--bienestar'>{title}</th>
+                ))}
+            {/* <th>Nombre Estudiante</th>
             <th>Documento</th>
             <th>Plan</th>
             <th>Ver observaciones</th>
-            <th>Crear observaciones</th>
+            <th>Crear observaciones</th> */}
           </tr>
         </thead>
-        <tbody>
-          {Students.filter((std) =>
-            std.documento.toString().includes(searcher)
-          ).map((student, index) => (
-            <tr key={index}>
-              <td>{student.nombre}</td>
-              <td>{student.documento}</td>
-              <td>{student.plan}</td>
-              <td>
-                <ViewInformation observacion={student.observaciones} />
-              </td>
-              <td>
-                <CreateInformation data={student} />
-              </td>
-            </tr>
-          ))}
-        </tbody>
+        {dataObservations[0] && (
+          <tbody>
+            {dataObservations[0]
+              .filter((std) =>
+                std.documento_estudiante.toString().includes(searcher)
+              )
+              .map((student, index) => (
+                <tr key={index}>
+                  {type === "Docentes" ? (
+                    <>
+                      <td>{student.nombres + " " + student.apellidos}</td>
+                      <td>{student.documento_estudiante}</td>
+                      <td>{student.codigo_plan}</td>
+                      <td>
+                        <ViewInformation observacion={student.observaciones} />
+                      </td>
+                      <td>
+                        <CreateInformation data={student} />
+                      </td>
+                    </>
+                  ) : (
+                    <>
+                      <td>
+                        {student.nombres_docente +
+                          " " +
+                          student.apellidos_docente}
+                      </td>
+                      <td>{student.documento_docente}</td>
+                      <td>{student.nombres + " " + student.apellidos}</td>
+                      <td>{student.documento_estudiante}</td>
+                      <td>{student.codigo_plan}</td>
+                      <td>
+                        <ViewInformation observacion={student.observaciones} />
+                      </td>
+                    </>
+                  )}
+                </tr>
+              ))}
+          </tbody>
+        )}
       </table>
     </div>
   );

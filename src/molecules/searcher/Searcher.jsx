@@ -21,7 +21,7 @@ const Searcher = ({ setSearcher }) => {
         type='text'
         value={inputValue}
         onChange={handleInputChange}
-        placeholder='Buscar Documento'
+        placeholder='Buscar documento estudiante'
       />
       <img className='searcher_img' src={Icon} />
     </form>
