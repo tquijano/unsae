@@ -39,7 +39,6 @@ const Teacher = () => {
       </div>
       {dataStudent[0] ? (
         <div className='docentes_container'>
-          <CreateRemission />
 
           {tabSelected === "0" && (
             <Remission type='Docentes' data={dataStudent[0]} />
