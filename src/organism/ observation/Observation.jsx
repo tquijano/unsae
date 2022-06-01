@@ -7,7 +7,10 @@ import "./Observation.scss";
 import ViewInformation from "../../molecules/viewInformation/ViewInformation";
 import { useSelector } from "react-redux";
 import Saludo from "../../assets/img/ola.gif";
-import { getObservations } from "../../actions/observations";
+import {
+  getObservationDocente,
+  getObservations,
+} from "../../actions/observations";
 
 const Observation = ({ type }) => {
   const Docentes = [
@@ -27,11 +30,14 @@ const Observation = ({ type }) => {
   ];
   const dispatch = useDispatch();
   const [dataObservations, setDataObservations] = useState([]);
+  const { user, id } = useSelector((state) => state.auth);
+
   useEffect(() => {
-    dispatch(getObservations(setDataObservations));
+    type === "Docentes"
+      ? dispatch(getObservationDocente(id, setDataObservations))
+      : dispatch(getObservations(setDataObservations));
   }, [dispatch, setDataObservations]);
   console.log("data observaciones", dataObservations);
-  const { user } = useSelector((state) => state.auth);
   const [searcher, setSearcher] = useState("");
 
   return (

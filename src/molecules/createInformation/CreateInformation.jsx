@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Swal from "sweetalert2";
 import { createObservation } from "../../actions/observations";
 import "./CreateInformation.scss";
 
 const CreateInformation = ({ data }) => {
+  const { user, id } = useSelector((state) => state.auth);
   //En textInfo esta lo que se creo
   const dispatch = useDispatch();
   console.log("data create", data);
@@ -26,7 +27,7 @@ const CreateInformation = ({ data }) => {
       dispatch(
         createObservation(
           data.documento_estudiante,
-          data.documento_docente,
+          data.documento_docente ? data.documento_docente : id,
           data.codigo_plan,
           text
         )

@@ -3,18 +3,18 @@ import { fetchSinToken } from "../helpers/fetch"
 
 
 export const getObservationDocente = (id_docente, setDataObservations) => {
+    console.log(id_docente)
     return async(dispatch) => {
         const resp = await fetchSinToken(`observaciones?documento=${id_docente}`);
         console.log(resp);
         const body = await resp.json();
-        // console.log(body);
+        console.log(body);
         if (body) {
             setDataObservations(datas => [...datas, body])
         } else {
             console.log('Algo ta mal')
         }
     }
-
 }
 
 export const getObservations= (setDataObservations) => {

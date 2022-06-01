@@ -2,6 +2,14 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { startLogout } from "../../actions/auth";
 import { searchStudent } from "../../actions/tutors";
+import ButtonLogout from "../../atoms/buttons/buttonLogout/ButtonLogout";
+import CreateRemission from "../../molecules/createRemission/CreateRemission";
+import Navbar from "../../molecules/navbar/Navbar";
+import Tutor from "../../molecules/tutor/Tutor";
+import ViewStudents from "../../molecules/viewStudents/ViewStudents";
+import Observation from "../../organism/ observation/Observation";
+import Remission from "../../organism/remission/Remission";
+// import Remission from "../../organism/remission/Remission";
 import "./Teachers.scss";
 
 const Teacher = () => {
@@ -22,32 +30,45 @@ const Teacher = () => {
   }, [dispatch, id, setDataStudent]);
 
   // const navigate = useNavigate();
-  const handleLogout = () => {
-    dispatch(startLogout());
-  };
+  const [tabSelected, setTabSelected] = useState("0");
 
   return (
-    <>
-      <br />
-      <br />
-      <br />
-      <div>Hola {user} Bienvenido a la pagina profesores </div>
-      <p>Tus estudiantes asignados son</p>
+    <div className='docentes'>
+      <div className='docentes_navbar'>
+        <Navbar setTabSelected={setTabSelected} />
+      </div>
       {dataStudent[0] ? (
-        dataStudent[0].map((student) => (
-          <p key={student.documento_estudiante}>
-            Nombre Estudiante: {student.nombres} Documento Estudiante:{" "}
-            {student.documento_estudiante} Plan: {student.codigo_plan}{" "}
-          </p>
-        ))
+        <div className='docentes_container'>
+          <CreateRemission />
+
+          {tabSelected === "0" && (
+            <Remission type='Docentes' data={dataStudent[0]} />
+          )}
+          {tabSelected === "1" && <Observation type='Docentes' />}
+          {tabSelected === "2" && (
+            <>
+              <h1> Asignar tutor </h1>
+              <Tutor />
+            </>
+          )}
+          {tabSelected === "3" && (
+            <>
+              <ViewStudents />
+              {dataStudent[0].map((student) => (
+                <p key={student.documento_estudiante}>
+                  Nombre Estudiante: {student.nombres} Documento Estudiante:{" "}
+                  {student.documento_estudiante} Plan: {student.codigo_plan}{" "}
+                </p>
+              ))}
+            </>
+          )}
+
+          <ButtonLogout />
+        </div>
       ) : (
         <></>
       )}
-
-      <button className='buttonHome' onClick={handleLogout}>
-        Logout
-      </button>
-    </>
+    </div>
   );
 };
 

@@ -8,6 +8,10 @@
       align-items: center;
     }
   }
+  &_cards{
+    display: flex;
+    justify-content: space-between;
+  }
   &_img{
     width: 40px;
   }
@@ -23,22 +27,13 @@
   }
   thead{
     border-bottom: 2px solid #E6ECEF;
-    .remission-th--estudiantes{
-
-      font-size: 18px;
-      width: 200px;
-      height: 30px;
-      &:nth-child(1){
-        width: 400px;
-      }
-    
-  }
     .remission-th--docentes{
 
         font-size: 18px;
         width: 200px;
         height: 30px;
         &:nth-child(1){
+          text-align: start;
           width: 300px;
         }
         &:nth-child(3){

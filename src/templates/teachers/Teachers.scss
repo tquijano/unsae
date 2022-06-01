@@ -1,0 +1,16 @@
+.docentes{
+  display: flex;
+  &_container{
+    flex: 80%;
+    display: flex;
+    flex-direction: column;
+    padding: 3% 0;
+    align-items: center;
+  }
+  &_navbar{
+    background: #F5F7F9;
+    flex: 20%;
+  }
+
+}
+
