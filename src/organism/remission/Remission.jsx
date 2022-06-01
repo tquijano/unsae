@@ -48,10 +48,10 @@ const Remission = ({ type }) => {
 
   const Bienestar = [
     "Nombre Docente",
-    "Documento Docente",
+    "Doc. Docente",
     "Nombre Estudiante",
-    "Documento Estudiante",
-    "plan Estudiante",
+    "Doc. Estudiante",
+    "Plan Estudiante",
     "Tipo Remision",
     "Fecha",
   ];
