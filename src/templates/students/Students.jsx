@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { startLogout } from "../../actions/auth";
 import { searchTeacher } from "../../actions/tutors";
+import TutorshipStudent from "../../molecules/tutoshipStudent/TutorshipStudent";
 import "./Students.scss";
 
 const Students = () => {
@@ -47,6 +48,8 @@ const Students = () => {
       ) : (
         <></>
       )}
+      <h1>Solicitar Tutoría</h1>
+      <TutorshipStudent/>
       <button className='buttonHome' onClick={handleLogout}>
         Logout
       </button>
