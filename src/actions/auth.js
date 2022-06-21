@@ -24,7 +24,7 @@ export const startLogin = ( username, password ) => {
         user: body.usuario_registrado
       }))
     } else {
-      Swal.fire({title:'QUsuario o contraseña incorrectos', icon: 'error' ,confirmButtonColor: '#005068'} )
+      Swal.fire({title:'Usuario o contraseña incorrectos', icon: 'error' ,confirmButtonColor: '#005068'} )
     }
 
   }

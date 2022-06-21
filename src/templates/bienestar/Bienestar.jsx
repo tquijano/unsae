@@ -13,10 +13,33 @@ import ButtonLogout from "../../atoms/buttons/buttonLogout/ButtonLogout";
 
 const Bienestar = () => {
   const [tabSelected, setTabSelected] = useState("0");
+
+  const tabs = [
+    {
+      label: "Observaciones",
+      name: "menu",
+      value: "0",
+    },
+    {
+      label: "Remisiones",
+      name: "menu",
+      value: "1",
+    },
+    {
+      label: "Tutoria",
+      name: "menu",
+      value: "2",
+    },
+    {
+      label: "Registro",
+      name: "menu",
+      value: "3",
+    },
+  ];
   return (
     <div className='bienestar'>
       <div className='bienestar_navbar'>
-        <Navbar setTabSelected={setTabSelected} />
+        <Navbar setTabSelected={setTabSelected} tabs={tabs} />
       </div>
       <div className='container_bienestar'>
         {tabSelected === "0" && <Observation />}

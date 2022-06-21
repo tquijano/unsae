@@ -44,6 +44,7 @@ const Remission = ({ type }) => {
     "plan",
     "Tipo Remision",
     "Fecha",
+    "Atendida",
   ];
 
   const Bienestar = [
@@ -52,8 +53,9 @@ const Remission = ({ type }) => {
     "Nombre Estudiante",
     "Doc. Estudiante",
     "Plan Estudiante",
-    "Tipo Remision",
+    "Remision",
     "Fecha",
+    "Atendida",
   ];
   return (
     <div className='remission'>
@@ -64,17 +66,21 @@ const Remission = ({ type }) => {
         </div>
         <Searcher setSearcher={setSearcher} />
       </div>
-      <div className='remission_cards'>
-        {cards.map(({ title, color }, index) => (
-          <Card_remission
-            setCardSelected={setCardSelected}
-            value={index}
-            title={title}
-            color={color}
-            key={index}
-          />
-        ))}
-      </div>
+      {type === "Docentes" ? (
+        <div className='remission_cards'>
+          {cards.map(({ title, color }, index) => (
+            <Card_remission
+              setCardSelected={setCardSelected}
+              value={index}
+              title={title}
+              color={color}
+              key={index}
+            />
+          ))}
+        </div>
+      ) : (
+        <></>
+      )}
       <table>
         <thead>
           <tr>
@@ -117,6 +123,11 @@ const Remission = ({ type }) => {
             </>
           ) : (
             <>
+              {console.log(
+                "data remisiones la que necesito",
+                dataRemissions[0]
+              )}
+
               {dataRemissions[0] && (
                 <tbody>
                   {dataRemissions[0]
@@ -129,8 +140,9 @@ const Remission = ({ type }) => {
                           <td>{student.nombres + " " + student.apellidos}</td>
                           <td>{student.documento_estudiante}</td>
                           <td>{student.codigo_plan}</td>
-                          <td>{student.tipo_observacion}</td>
+                          <td>{student.nombre_remision}</td>
                           <td>{student.fecha}</td>
+                          <td>{student.atendida ? "SI" : "NO"}</td>
                         </>
                       </tr>
                     ))}
@@ -158,8 +170,9 @@ const Remission = ({ type }) => {
                         <td>{student.nombres + " " + student.apellidos}</td>
                         <td>{student.documento_estudiante}</td>
                         <td>{student.codigo_plan}</td>
-                        <td>{student.tipo_observacion}</td>
-                        <td>{student.fecha}</td>
+                        <td>{student.codigo_tipo_remision}</td>
+                        <td>{new Date(student.fecha).toLocaleDateString()}</td>
+                        <td>{student.atendida ? "SI" : "NO"}</td>
                       </>
                     </tr>
                   ))}

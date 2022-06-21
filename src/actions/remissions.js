@@ -18,8 +18,9 @@ export const getTypesRemission = (setTypesRemission) => {
 export const getStudentsTeacher = (documento_docente, setDataRemissionTeacher) => {
     console.log(documento_docente)
     return async(dispatch) => {
+        console.log('holiiiii')
         const resp = await fetchSinToken(`observaciones?documento=${documento_docente}`);
-        console.log(resp);
+        console.log('algo pasa aqui', resp);
         const body = await resp.json();
         console.log(body);
         if (body) {

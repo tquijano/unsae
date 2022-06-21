@@ -32,14 +32,36 @@ const Teacher = () => {
   // const navigate = useNavigate();
   const [tabSelected, setTabSelected] = useState("0");
 
+  const tabs = [
+    {
+      label: "Remisiones",
+      name: "menuTeacher",
+      value: "0",
+    },
+    {
+      label: "Observaciones",
+      name: "menuTeacher",
+      value: "1",
+    },
+    {
+      label: " Mis Tutorias",
+      name: "menuTeacher",
+      value: "2",
+    },
+    {
+      label: "Registro",
+      name: "menuTeacher",
+      value: "3",
+    },
+  ];
+
   return (
     <div className='docentes'>
       <div className='docentes_navbar'>
-        <Navbar setTabSelected={setTabSelected} />
+        <Navbar setTabSelected={setTabSelected} tabs={tabs} />
       </div>
       {dataStudent[0] ? (
         <div className='docentes_container'>
-
           {tabSelected === "0" && (
             <Remission type='Docentes' data={dataStudent[0]} />
           )}
@@ -52,7 +74,6 @@ const Teacher = () => {
           )}
           {tabSelected === "3" && (
             <>
-              <ViewStudents />
               {dataStudent[0].map((student) => (
                 <p key={student.documento_estudiante}>
                   Nombre Estudiante: {student.nombres} Documento Estudiante:{" "}

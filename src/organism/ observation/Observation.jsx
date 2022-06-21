@@ -53,11 +53,15 @@ const Observation = ({ type }) => {
         <thead>
           <tr>
             {type === "Docentes"
-              ? Docentes.map((title) => (
-                  <th className='observation-th--docentes'> {title} </th>
+              ? Docentes.map((title, index) => (
+                  <th className='observation-th--docentes' key={index}>
+                    {title}
+                  </th>
                 ))
-              : Bienestar.map((title) => (
-                  <th className='observation-th--bienestar'>{title}</th>
+              : Bienestar.map((title, index) => (
+                  <th className='observation-th--bienestar' key={index}>
+                    {title}
+                  </th>
                 ))}
             {/* <th>Nombre Estudiante</th>
             <th>Documento</th>
@@ -89,7 +93,7 @@ const Observation = ({ type }) => {
                   ) : (
                     <>
                       <td>
-                        {student.nombres_docente +
+                        {student.nombre_docente +
                           " " +
                           student.apellidos_docente}
                       </td>
