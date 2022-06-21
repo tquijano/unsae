@@ -8,6 +8,12 @@
       align-items: center;
     }
   }
+  &_cards{
+    display: flex;
+    justify-content: flex-start;
+    gap: 6%;
+    margin: 4rem 0;
+  }
   &_img{
     width: 40px;
   }
@@ -50,17 +56,18 @@
         font-size: 18px;
         width: 180px;
         height: 30px;
-        &:nth-child(1), &:nth-child(3){          
-          width: 200px;
+        
+        &:nth-child(3){          
+          width: 300px;
         }
         &:nth-child(5){
           width: 150px;
         }
-        &:nth-child(6){
+        &:nth-child(7){
           width: 100px;
         }
         &:nth-child(8){
-          width: 100px;
+          width: 80px;
         }
     }
   }
@@ -69,7 +76,7 @@
       text-transform: capitalize;
       font-size: 18px;
       box-sizing: border-box;
-      padding: 15px 0px;
+      padding: 15px 10px 15px 0px;
       height: 40px;
     }
 

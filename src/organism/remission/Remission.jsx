@@ -11,6 +11,7 @@ import {
   getStudentsTeacher,
 } from "../../actions/remissions";
 import Card_remission from "../../molecules/cards_remissions/Card_remission";
+import Checkbox from "../../atoms/checkbox/Checkbox";
 
 const Remission = ({ type }) => {
   const dispatch = useDispatch();
@@ -86,14 +87,20 @@ const Remission = ({ type }) => {
           <tr>
             {type === "Docentes"
               ? cardSelected === 0
-                ? Estudiantes.map((title) => (
-                    <th className='remission-th--estudiantes'> {title} </th>
+                ? Estudiantes.map((title, index) => (
+                    <th className='remission-th--estudiantes' key={index}>
+                      {title}
+                    </th>
                   ))
-                : Docentes.map((title) => (
-                    <th className='remission-th--docentes'> {title} </th>
+                : Docentes.map((title, index) => (
+                    <th className='remission-th--docentes' key={index}>
+                      {title}
+                    </th>
                   ))
-              : Bienestar.map((title) => (
-                  <th className='remission-th--bienestar'>{title}</th>
+              : Bienestar.map((title, index) => (
+                  <th className='remission-th--bienestar' key={index}>
+                    {title}
+                  </th>
                 ))}
           </tr>
         </thead>
@@ -161,18 +168,20 @@ const Remission = ({ type }) => {
                   .map((student, index) => (
                     <tr key={index}>
                       <>
-                        <td>
-                          {student.nombres_docente +
-                            " " +
-                            student.apellidos_docente}
-                        </td>
+                        <td>{student.nombre_apellido_docente}</td>
                         <td>{student.documento_docente}</td>
-                        <td>{student.nombres + " " + student.apellidos}</td>
+                        <td>{student.nombre_apellido_estudiante}</td>
                         <td>{student.documento_estudiante}</td>
-                        <td>{student.codigo_plan}</td>
-                        <td>{student.codigo_tipo_remision}</td>
+                        <td>{student.nombre_plan}</td>
+                        <td>{student.tipo_remision}</td>
                         <td>{new Date(student.fecha).toLocaleDateString()}</td>
-                        <td>{student.atendida ? "SI" : "NO"}</td>
+                        <td>
+                          <Checkbox
+                            state={student.atendida}
+                            codigo={student.codigo_remision}
+                            id={index}
+                          />
+                        </td>
                       </>
                     </tr>
                   ))}
