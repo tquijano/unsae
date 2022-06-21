@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { startLogout } from "../../actions/auth";
+import { getHistoryTutorStudent } from "../../actions/historyTutor";
 import { searchTeacher } from "../../actions/tutors";
 import "./Students.scss";
 
@@ -22,6 +23,9 @@ const Students = () => {
     dispatch(startLogout());
   };
 
+  const handleHistory = () => {
+    dispatch(getHistoryTutorStudent(id));
+  };
   //   const action = {
   //     type: types.logout
   //   }
@@ -47,6 +51,13 @@ const Students = () => {
       ) : (
         <></>
       )}
+      <p>
+        Las tutorias me devuelven una lista con apellido docente, documento del
+        estudiante, estado de la tutoria, fecha y nombre del docente
+      </p>
+      <button className='buttonHome' onClick={handleHistory}>
+        Ver Historial
+      </button>
       <button className='buttonHome' onClick={handleLogout}>
         Logout
       </button>
