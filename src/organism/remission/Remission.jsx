@@ -148,7 +148,9 @@ const Remission = ({ type }) => {
                           <td>{student.documento_estudiante}</td>
                           <td>{student.codigo_plan}</td>
                           <td>{student.nombre_remision}</td>
-                          <td>{student.fecha}</td>
+                          <td>
+                            {new Date(student.fecha).toLocaleDateString()}
+                          </td>
                           <td>{student.atendida ? "SI" : "NO"}</td>
                         </>
                       </tr>

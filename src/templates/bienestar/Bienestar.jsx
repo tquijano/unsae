@@ -4,15 +4,21 @@ import RegisterBienestar from "../../organism/register/registerBienestar/Registe
 import RegisterStudent from "../../organism/register/registerStudent/RegisterStudent";
 import RegisterTeacher from "../../organism/register/registerTeacher/RegisterTeacher";
 import { useDispatch } from "react-redux";
-import { startLogout } from "../../actions/auth";
 import "./Bienestar.scss";
 import Remission from "../../organism/remission/Remission";
 import Observation from "../../organism/ observation/Observation";
 import Navbar from "../../molecules/navbar/Navbar";
 import ButtonLogout from "../../atoms/buttons/buttonLogout/ButtonLogout";
+import { getHistoryTutor } from "../../actions/historyTutor";
 
 const Bienestar = () => {
+  const dispatch = useDispatch();
+
   const [tabSelected, setTabSelected] = useState("0");
+
+  const handleHistory = () => {
+    dispatch(getHistoryTutor());
+  };
 
   const tabs = [
     {
@@ -47,6 +53,10 @@ const Bienestar = () => {
         {tabSelected === "2" && (
           <>
             <h1> Asignar tutor </h1>
+            <p>Filtrar segun docente</p>
+            <button className='buttonHome' onClick={handleHistory}>
+              Ver Historial tutorias
+            </button>
             <Tutor />
           </>
         )}

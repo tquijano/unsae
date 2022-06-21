@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { startLogout } from "../../actions/auth";
+import { getHistoryTutorTeacher } from "../../actions/historyTutor";
 import { searchStudent } from "../../actions/tutors";
 import ButtonLogout from "../../atoms/buttons/buttonLogout/ButtonLogout";
-import CreateRemission from "../../molecules/createRemission/CreateRemission";
 import Navbar from "../../molecules/navbar/Navbar";
 import Tutor from "../../molecules/tutor/Tutor";
-import ViewStudents from "../../molecules/viewStudents/ViewStudents";
 import Observation from "../../organism/ observation/Observation";
 import Remission from "../../organism/remission/Remission";
 // import Remission from "../../organism/remission/Remission";
@@ -19,10 +17,8 @@ const Teacher = () => {
 
   // const { user, dispatch } = useContext(AuthContex)
 
-  const { user } = useSelector((state) => state.auth);
+  const { user, id } = useSelector((state) => state.auth);
   console.log(user);
-
-  const { id } = useSelector((state) => state.auth);
   console.log(id);
 
   useEffect(() => {
@@ -32,6 +28,11 @@ const Teacher = () => {
   // const navigate = useNavigate();
   const [tabSelected, setTabSelected] = useState("0");
 
+  const handleHistory = () => {
+    dispatch(getHistoryTutorTeacher(id));
+  };
+
+  //TODO: Cambiar el handleHistory
   const tabs = [
     {
       label: "Remisiones",
@@ -69,6 +70,9 @@ const Teacher = () => {
           {tabSelected === "2" && (
             <>
               <h1> Asignar tutor </h1>
+              <button className='buttonHome' onClick={handleHistory}>
+                Ver Historial tutorias docente
+              </button>
               <Tutor />
             </>
           )}
