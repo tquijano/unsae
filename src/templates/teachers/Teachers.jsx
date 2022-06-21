@@ -6,6 +6,7 @@ import ButtonLogout from "../../atoms/buttons/buttonLogout/ButtonLogout";
 import CreateRemission from "../../molecules/createRemission/CreateRemission";
 import Navbar from "../../molecules/navbar/Navbar";
 import Tutor from "../../molecules/tutor/Tutor";
+import Tutorship from "../../molecules/tutorshipTeacher/TutorshipTeacher";
 import ViewStudents from "../../molecules/viewStudents/ViewStudents";
 import Observation from "../../organism/ observation/Observation";
 import Remission from "../../organism/remission/Remission";
@@ -70,6 +71,8 @@ const Teacher = () => {
             <>
               <h1> Asignar tutor </h1>
               <Tutor />
+              <h1> Asignar tutoría</h1>
+              <Tutorship/>
             </>
           )}
           {tabSelected === "3" && (
