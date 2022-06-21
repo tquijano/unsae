@@ -80,3 +80,21 @@ export const createRemission = (documento_docente, documento_estudiante,codigo_p
 
   }
 }
+
+export const updateRemission = (codigo_remision, atendida ) => {
+    console.log('Update remision',codigo_remision, atendida )
+    return async(dispatch) => {
+        console.log(codigo_remision, atendida);
+        const resp = await fetchSinToken('bienestar/remisiones', { codigo_remision, atendida }, 'POST');
+        console.log(resp);
+        const body = await resp.json();
+        console.log('update remision',body);
+        if (body.affected_rows === 1) {
+        Swal.fire(`Se ha registrado que la remision ${codigo_remision} ${atendida? 'ha sido atendida' : 'NO ha sido atendida'}`);
+  
+      } else {
+          console.log('Algo ta mal')
+      }
+    }
+  }
+  
