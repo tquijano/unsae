@@ -91,3 +91,12 @@ export const getStudentTutorship = (teacher, setDataStudentTutorship) => {
         }
     }
 }
+
+export const tutorshipTeacherAssignment = (documento_docente, documento_estudiante, fecha_tutoria, tipo_usuario) => {
+    return async(dispatch) => {
+        const resp = await fetchSinToken(`manipularTutoria`, { documento_docente, documento_estudiante, fecha_tutoria, tipo_usuario }, 'POST');
+        console.log(resp)
+        const body = await resp.json();
+        console.log(body)
+    }
+}
