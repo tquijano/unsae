@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getHistoryTutorTeacher } from "../../actions/historyTutor";
+import { getPendingTutor, tutoringProvided } from "../../actions/pendingTutor";
 import { searchStudent } from "../../actions/tutors";
 import ButtonLogout from "../../atoms/buttons/buttonLogout/ButtonLogout";
 import Navbar from "../../molecules/navbar/Navbar";
@@ -30,6 +31,13 @@ const Teacher = () => {
 
   const handleHistory = () => {
     dispatch(getHistoryTutorTeacher(id));
+  };
+
+  const handleProvided = () => {
+    dispatch(tutoringProvided(2, id, 10013, "2022-08-22"));
+  };
+  const handlePending = () => {
+    dispatch(getPendingTutor(2, id));
   };
 
   //TODO: Cambiar el handleHistory
@@ -72,6 +80,12 @@ const Teacher = () => {
               <h1> Asignar tutor </h1>
               <button className='buttonHome' onClick={handleHistory}>
                 Ver Historial tutorias docente
+              </button>
+              <button className='buttonHome' onClick={handlePending}>
+        Ver Tutorias pendientes
+      </button>
+              <button className='buttonHome' onClick={handleProvided}>
+                Cambiar estado tutoria
               </button>
               <Tutor />
             </>
