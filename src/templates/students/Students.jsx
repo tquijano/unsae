@@ -4,6 +4,7 @@ import { startLogout } from "../../actions/auth";
 import { getHistoryTutorStudent } from "../../actions/historyTutor";
 import { getPendingTutor } from "../../actions/pendingTutor";
 import { searchTeacher } from "../../actions/tutors";
+import TutorshipStudent from "../../molecules/tutoshipStudent/TutorshipStudent";
 import "./Students.scss";
 
 const Students = () => {
@@ -26,7 +27,6 @@ const Students = () => {
   const handlePending = () => {
     dispatch(getPendingTutor(1, id));
   };
-  
 
   const handleHistory = () => {
     dispatch(getHistoryTutorStudent(id));
@@ -66,6 +66,8 @@ const Students = () => {
       <button className='buttonHome' onClick={handleHistory}>
         Ver Historial
       </button>
+      <h1>Solicitar Tutoría</h1>
+      <TutorshipStudent />
       <button className='buttonHome' onClick={handleLogout}>
         Logout
       </button>

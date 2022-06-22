@@ -6,6 +6,7 @@ import { searchStudent } from "../../actions/tutors";
 import ButtonLogout from "../../atoms/buttons/buttonLogout/ButtonLogout";
 import Navbar from "../../molecules/navbar/Navbar";
 import Tutor from "../../molecules/tutor/Tutor";
+import Tutorship from "../../molecules/tutorshipTeacher/TutorshipTeacher";
 import Observation from "../../organism/ observation/Observation";
 import Remission from "../../organism/remission/Remission";
 // import Remission from "../../organism/remission/Remission";
@@ -82,12 +83,14 @@ const Teacher = () => {
                 Ver Historial tutorias docente
               </button>
               <button className='buttonHome' onClick={handlePending}>
-        Ver Tutorias pendientes
-      </button>
+                Ver Tutorias pendientes
+              </button>
               <button className='buttonHome' onClick={handleProvided}>
                 Cambiar estado tutoria
               </button>
               <Tutor />
+              <h1> Asignar tutoría</h1>
+              <Tutorship />
             </>
           )}
           {tabSelected === "3" && (
