@@ -47,6 +47,12 @@ const Tutorship = () => {
   //   console.log(dateTutorship);
   // }
 
+  const footer = dateSelected ? (
+    <p>{format(dateSelected, 'PPP', { locale: es })}</p>
+  ) : (
+    <p>Selecciona una fecha</p>
+  );
+
   return (
     <div>
       {dataStudentTutorship[0] ? (
@@ -74,7 +80,7 @@ const Tutorship = () => {
         mode="single"
         selected={dateSelected}
         onSelect={setDateSelect}
-        footer="Selecciona un dia"
+        footer={footer}
       />
       <></>
       {/* <button onClick={dateTest}>TEST DATE</button> */}

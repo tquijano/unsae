@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { DayPicker } from "react-day-picker";
 import "react-day-picker/dist/style.css";
 import { getTeacherTutorship, tutorshipAssignment } from "../../actions/tutors";
+import { format } from "date-fns";
+import es from 'date-fns/locale/es';
 
 const TutorshipStudent = () => {
     const dispatch = useDispatch();
@@ -25,7 +27,7 @@ const TutorshipStudent = () => {
 
     const [dateSelected, setDateSelect] = useState("");
 
-    const handleRequest = (e) =>{
+    const handleRequest = (e) => {
         e.preventDefault();
         dispatch(
             tutorshipAssignment(
@@ -37,6 +39,12 @@ const TutorshipStudent = () => {
             )
         );
     }
+
+    const footer = dateSelected ? (
+        <p>{format(dateSelected, 'PPP', {locale: es})}</p>
+    ) : (
+        <p>Selecciona una fecha</p>
+    );
 
     // console.log(dataTeacherTutorship[0]);
     return (
@@ -60,9 +68,11 @@ const TutorshipStudent = () => {
                     </select>
                     <DayPicker
                         mode="single"
+                        required
+                        locale={es}
                         selected={dateSelected}
                         onSelect={setDateSelect}
-                        footer="Selecciona un dia"
+                        footer={footer}
                     />
                     <button onClick={handleRequest}>
                         Solicitar Tutoría
