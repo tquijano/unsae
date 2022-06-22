@@ -5,11 +5,10 @@ import { getPendingTutor, tutoringProvided } from "../../actions/pendingTutor";
 import { searchStudent } from "../../actions/tutors";
 import ButtonLogout from "../../atoms/buttons/buttonLogout/ButtonLogout";
 import Navbar from "../../molecules/navbar/Navbar";
-import Tutor from "../../molecules/tutor/Tutor";
 import Tutorship from "../../molecules/tutorshipTeacher/TutorshipTeacher";
 import Observation from "../../organism/ observation/Observation";
 import Remission from "../../organism/remission/Remission";
-// import Remission from "../../organism/remission/Remission";
+import Tutorial from "../../organism/turorials/Tutorial";
 import "./Teachers.scss";
 
 const Teacher = () => {
@@ -17,31 +16,14 @@ const Teacher = () => {
 
   const [dataStudent, setDataStudent] = useState([]);
 
-  // const { user, dispatch } = useContext(AuthContex)
-
   const { user, id } = useSelector((state) => state.auth);
-  console.log(user);
-  console.log(id);
 
   useEffect(() => {
     dispatch(searchStudent(id, setDataStudent));
   }, [dispatch, id, setDataStudent]);
 
-  // const navigate = useNavigate();
   const [tabSelected, setTabSelected] = useState("0");
 
-  const handleHistory = () => {
-    dispatch(getHistoryTutorTeacher(id));
-  };
-
-  const handleProvided = () => {
-    dispatch(tutoringProvided(2, id, 10013, "2022-08-22"));
-  };
-  const handlePending = () => {
-    dispatch(getPendingTutor(2, id));
-  };
-
-  //TODO: Cambiar el handleHistory
   const tabs = [
     {
       label: "Remisiones",
@@ -65,49 +47,56 @@ const Teacher = () => {
     },
   ];
 
+  const Teacher = [
+    "Nombre Estudiante",
+    "Doc. Estudiante",
+    "Fecha",
+    "Estado Tutoria",
+  ];
+
   return (
     <div className='docentes'>
       <div className='docentes_navbar'>
         <Navbar setTabSelected={setTabSelected} tabs={tabs} />
       </div>
-      {dataStudent[0] ? (
-        <div className='docentes_container'>
+      {dataStudent[0] && (
+        <>
           {tabSelected === "0" && (
-            <Remission type='Docentes' data={dataStudent[0]} />
+            <div className='docentes_container'>
+              <Remission type='Docentes' data={dataStudent[0]} />
+              <ButtonLogout />
+            </div>
           )}
-          {tabSelected === "1" && <Observation type='Docentes' />}
+          {tabSelected === "1" && (
+            <div className='docentes_container'>
+              <Observation type='Docentes' />
+              <ButtonLogout />
+            </div>
+          )}
           {tabSelected === "2" && (
-            <>
-              <h1> Asignar tutor </h1>
-              <button className='buttonHome' onClick={handleHistory}>
-                Ver Historial tutorias docente
-              </button>
-              <button className='buttonHome' onClick={handlePending}>
-                Ver Tutorias pendientes
-              </button>
-              <button className='buttonHome' onClick={handleProvided}>
-                Cambiar estado tutoria
-              </button>
-              <Tutor />
-              <h1> Asignar tutoría</h1>
-              <Tutorship />
-            </>
+            <div className='docentes_containerTutor'>
+              <div className='docentes_containerTutor--history'>
+                <Tutorial id={id} user={user} data={Teacher} />
+              </div>
+              <div className='docentes_containerTutor--request'>
+                <h1> Asignar tutoría</h1>
+                <Tutorship />
+                <ButtonLogout />
+              </div>
+            </div>
           )}
           {tabSelected === "3" && (
-            <>
+            <div className='docentes_container'>
               {dataStudent[0].map((student) => (
                 <p key={student.documento_estudiante}>
                   Nombre Estudiante: {student.nombres} Documento Estudiante:{" "}
                   {student.documento_estudiante} Plan: {student.codigo_plan}{" "}
                 </p>
               ))}
-            </>
+              <ButtonLogout />
+            </div>
           )}
-
-          <ButtonLogout />
-        </div>
-      ) : (
-        <></>
+        </>
       )}
     </div>
   );

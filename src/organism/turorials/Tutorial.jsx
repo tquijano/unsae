@@ -11,6 +11,7 @@ import {
   getHistoryTutorTeacher,
 } from "../../actions/historyTutor";
 import { getPendingTutor } from "../../actions/pendingTutor";
+import ButtonState from "../../atoms/buttons/buttonState/ButtonState";
 
 const Tutorial = ({ id, user, data }) => {
   const dispatch = useDispatch();
@@ -29,8 +30,8 @@ const Tutorial = ({ id, user, data }) => {
     data.length === 3
       ? dispatch(getPendingTutor(1, id, setDataTutorialPending)) &&
         dispatch(getHistoryTutorStudent(id, setDataTutorialHistory))
-      : data.length === 5
-      ? dispatch(getPendingTutor(1, id, setDataTutorialPending)) &&
+      : data.length === 4
+      ? dispatch(getPendingTutor(2, id, setDataTutorialPending)) &&
         dispatch(getHistoryTutorTeacher(id, setDataTutorialHistory))
       : dispatch(getHistoryTutor(setDataTutorialHistory));
   }, [dispatch, setDataTutorialHistory]);
@@ -44,7 +45,7 @@ const Tutorial = ({ id, user, data }) => {
         <Searcher setSearcher={setSearcher} />
       </div>
 
-      {data.length === (3 || 5) && (
+      {(data.length === 3 || data.length === 4) && (
         <div className='tutorial_cards'>
           {cards.map(({ title, color }, index) => (
             <Cards_tutor
@@ -67,7 +68,7 @@ const Tutorial = ({ id, user, data }) => {
                 className={`tutorial-th--${
                   data.length === 3
                     ? "estudiantes"
-                    : data.length === 5
+                    : data.length === 4
                     ? "docentes"
                     : "bienestar"
                 }`}
@@ -124,7 +125,91 @@ const Tutorial = ({ id, user, data }) => {
                             ).toLocaleDateString()}
                           </td>
                           <td>
-                            {student.estado_tutoria === 5
+                            {student.estado_tutoria === 4
+                              ? "No realizada"
+                              : "Realizada"}
+                          </td>
+                        </>
+                      </tr>
+                    ))}
+                </tbody>
+              )}
+            </>
+          ))}
+        {data.length === 4 &&
+          (cardSelected === 0 ? (
+            <>
+              {dataTutorialPending[0] && (
+                <tbody>
+                  {dataTutorialPending[0]
+                    .filter((std) =>
+                      std.documento.toString().includes(searcher)
+                    )
+                    .map(
+                      (
+                        {
+                          nombre_completo,
+                          documento,
+                          fecha_de_la_tutoria,
+                          estado,
+                        },
+                        index
+                      ) => (
+                        <tr key={index}>
+                          <>
+                            <td>{nombre_completo}</td>
+                            <td>{documento}</td>
+                            <td>
+                              {new Date(
+                                fecha_de_la_tutoria
+                              ).toLocaleDateString()}
+                            </td>
+                            <td>
+                              {estado === "Aceptada" ? (
+                                <>
+                                  {estado}
+                                  <ButtonState
+                                    id={id}
+                                    doc={documento}
+                                    date={fecha_de_la_tutoria}
+                                  />
+                                </>
+                              ) : (
+                                estado
+                              )}
+                            </td>
+                          </>
+                        </tr>
+                      )
+                    )}
+                </tbody>
+              )}
+            </>
+          ) : (
+            <>
+              {dataTutorialHistory[0] && (
+                <tbody>
+                  {dataTutorialHistory[0]
+                    .filter((std) =>
+                      std.documento_estudiante.toString().includes(searcher)
+                    )
+                    .map((student, index) => (
+                      <tr key={index}>
+                        <>
+                          <td>
+                            {student.nombre_estudiante +
+                              " " +
+                              student.apellido_estudiante}
+                          </td>
+                          <td>{student.documento_estudiante}</td>
+
+                          <td>
+                            {new Date(
+                              student.fecha_de_la_tutoria
+                            ).toLocaleDateString()}
+                          </td>
+                          <td>
+                            {student.estado_tutoria === 4
                               ? "No realizada"
                               : "Realizada"}
                           </td>

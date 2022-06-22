@@ -26,7 +26,7 @@ export const tutoringProvided = (id_tipo_usuario, documento_docente, documento_e
       const body = await resp.json();
       console.log('tutoria realizada',body);
       if (body.status == 'ok' ) {
-      Swal.fire("Se ha marcado la tutoria como Realizada");
+      Swal.fire("Se ha marcado la tutoria como Realizada", "", "success");
 
     } else {
         console.log('Algo ta mal')
