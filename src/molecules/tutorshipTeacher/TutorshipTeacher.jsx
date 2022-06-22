@@ -7,6 +7,7 @@ import {
   getStudentTutorship,
   tutorshipAssignment,
 } from "../../actions/tutors";
+import es from 'date-fns/locale/es';
 import "./TutorshipTeacher.scss";
 
 const Tutorship = () => {
