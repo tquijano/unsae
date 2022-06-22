@@ -9,6 +9,7 @@ import {
 } from "../../actions/tutors";
 import es from 'date-fns/locale/es';
 import "./TutorshipTeacher.scss";
+import ButtonTutorship from "../../atoms/buttons/buttonTutorship/ButtonTutorship";
 
 const Tutorship = () => {
   const dispatch = useDispatch();
@@ -26,6 +27,9 @@ const Tutorship = () => {
   };
 
   const [dateSelected, setDateSelect] = useState("");
+  
+
+  const [tutorshipAssignmentDone, setTutorshipAssignmentDone] = useState([]);
 
   const handleAssignment = (e) => {
     e.preventDefault();
@@ -33,11 +37,11 @@ const Tutorship = () => {
       tutorshipAssignment(
         id,
         studentValue,
-        `${dateSelected.getFullYear()}-${dateSelected.getMonth() + 1
-        }-${dateSelected.getDate()}`,
+        dateSelected.toISOString().split('T')[0],
         "docente"
       )
     );
+    setTutorshipAssignmentDone(`Tutoría asignada el dia ${dateSelected.toISOString().split('T')[0]} al estudiante ${studentValue}`);
     // console.log(`Tutoria: profe: ${id} estudiante: ${studentValue} fecha:${ `${dateSelected.getFullYear()}-${dateSelected.getMonth() + 1}-${dateSelected.getDate()}`}`);
     console.log("-------------envie");
   };
@@ -55,13 +59,14 @@ const Tutorship = () => {
   );
 
   return (
-    <div>
+    <div className="tutorship">
       {dataStudentTutorship[0] ? (
         <>
           <select
             name="select"
             value={studentValue}
             onChange={handleSelectStudentChange}
+            required
           >
             <option>Selecciona un Estudiante</option>
             {dataStudentTutorship[0].map((student) => (
@@ -69,25 +74,33 @@ const Tutorship = () => {
                 value={student.documento_estudiante}
                 key={student.documento_estudiante}
               >
-                {student.apellidos} {student.nombres}
+                {student.apellidos} {student.nombres} {student.documento_estudiante}
               </option>
             ))}
           </select>
+          <DayPicker
+            mode="single"
+            selected={dateSelected}
+            onSelect={setDateSelect}
+            footer={footer}
+            required
+          />
+          {tutorshipAssignmentDone.length === 0 ?
+            <></> : (
+              <p>
+                {tutorshipAssignmentDone}
+              </p>
+            )
+          }
+          <ButtonTutorship action={handleAssignment}/>
+          {/* <button className="buttonTutorship" type="submit" onClick={handleAssignment}>
+            <span className="text">Asignar Tutoría</span>
+            <i className="icon">✓</i>
+          </button> */}
         </>
       ) : (
         <></>
       )}
-      <DayPicker
-        mode="single"
-        selected={dateSelected}
-        onSelect={setDateSelect}
-        footer={footer}
-      />
-      <></>
-      {/* <button onClick={dateTest}>TEST DATE</button> */}
-      <button className="buttonTutorship" onClick={handleAssignment}>
-        Asignar Tutoría
-      </button>
     </div>
   );
 };
