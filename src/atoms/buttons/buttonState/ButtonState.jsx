@@ -25,7 +25,8 @@ const ButtonState = ({ id, doc, date }) => {
   };
   return (
     <button className='buttonState' onClick={handleProvided}>
-      Realizada
+      <span className="text">Realizada</span>
+      <i className="icon">✓</i>
     </button>
   );
 };
