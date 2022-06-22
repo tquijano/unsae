@@ -51,7 +51,7 @@ const Teacher = () => {
     "Nombre Estudiante",
     "Doc. Estudiante",
     "Fecha",
-    "Estado Tutoria",
+    "Estado de la Tutoría",
   ];
 
   return (
@@ -74,16 +74,18 @@ const Teacher = () => {
             </div>
           )}
           {tabSelected === "2" && (
-            <div className='docentes_containerTutor'>
-              <div className='docentes_containerTutor--history'>
-                <Tutorial id={id} user={user} data={Teacher} />
+            <>
+              <div className='docentes_containerTutor'>
+                <div className='docentes_containerTutor--history'>
+                  <Tutorial id={id} user={user} data={Teacher} />
+                </div>
+                <div className='docentes_containerTutor--request'>
+                  <h1> Asignar tutoría</h1>
+                  <Tutorship />
+                  <ButtonLogout />
+                </div>
               </div>
-              <div className='docentes_containerTutor--request'>
-                <h1> Asignar tutoría</h1>
-                <Tutorship />
-                <ButtonLogout />
-              </div>
-            </div>
+            </>
           )}
           {tabSelected === "3" && (
             <div className='docentes_container'>
