@@ -12,6 +12,7 @@ import {
 } from "../../actions/historyTutor";
 import { getPendingTutor } from "../../actions/pendingTutor";
 import ButtonState from "../../atoms/buttons/buttonState/ButtonState";
+import ButtonsPendingTutorship from "../../atoms/buttons/buttonsPendingTutorship/ButtonsPendingTutorship";
 
 const Tutorial = ({ id, user, data }) => {
   const dispatch = useDispatch();
@@ -29,11 +30,11 @@ const Tutorial = ({ id, user, data }) => {
   useEffect(() => {
     data.length === 3
       ? dispatch(getPendingTutor(1, id, setDataTutorialPending)) &&
-        dispatch(getHistoryTutorStudent(id, setDataTutorialHistory))
+      dispatch(getHistoryTutorStudent(id, setDataTutorialHistory))
       : data.length === 4
-      ? dispatch(getPendingTutor(2, id, setDataTutorialPending)) &&
+        ? dispatch(getPendingTutor(2, id, setDataTutorialPending)) &&
         dispatch(getHistoryTutorTeacher(id, setDataTutorialHistory))
-      : dispatch(getHistoryTutor(setDataTutorialHistory));
+        : dispatch(getHistoryTutor(setDataTutorialHistory));
   }, [dispatch, setDataTutorialHistory]);
   return (
     <div className='tutorial'>
@@ -65,13 +66,12 @@ const Tutorial = ({ id, user, data }) => {
             {data.map((title, index) => (
               <th
                 key={index}
-                className={`tutorial-th--${
-                  data.length === 3
-                    ? "estudiantes"
-                    : data.length === 4
+                className={`tutorial-th--${data.length === 3
+                  ? "estudiantes"
+                  : data.length === 4
                     ? "docentes"
                     : "bienestar"
-                }`}
+                  }`}
               >
                 {title}
               </th>
@@ -175,8 +175,16 @@ const Tutorial = ({ id, user, data }) => {
                                   />
                                 </>
                               ) : (
-                                estado
+                                <>
+                                  <ButtonsPendingTutorship
+                                    documento_docente={id}
+                                    documento_estudiante={documento}
+                                    fecha_tutoria={fecha_de_la_tutoria}
+                                    estado_tutoria={estado}
+                                  />
+                                </>
                               )}
+
                             </td>
                           </>
                         </tr>
