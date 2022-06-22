@@ -51,17 +51,11 @@
         width: 180px;
         height: 30px;
         
-        &:nth-child(3){          
-          width: 300px;
+        &:nth-child(1){          
+          width: 250px;
         }
-        &:nth-child(5){
-          width: 150px;
-        }
-        &:nth-child(7){
-          width: 100px;
-        }
-        &:nth-child(8){
-          width: 80px;
+        &:nth-child(3){
+          width: 350px;
         }
     }
   }

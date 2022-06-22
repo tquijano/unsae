@@ -10,15 +10,12 @@ import Observation from "../../organism/ observation/Observation";
 import Navbar from "../../molecules/navbar/Navbar";
 import ButtonLogout from "../../atoms/buttons/buttonLogout/ButtonLogout";
 import { getHistoryTutor } from "../../actions/historyTutor";
+import Tutorial from "../../organism/turorials/Tutorial";
 
 const Bienestar = () => {
   const dispatch = useDispatch();
 
   const [tabSelected, setTabSelected] = useState("0");
-
-  const handleHistory = () => {
-    dispatch(getHistoryTutor());
-  };
 
   const tabs = [
     {
@@ -42,33 +39,54 @@ const Bienestar = () => {
       value: "3",
     },
   ];
+
+  const Bienestar = [
+    "Nombre Docente",
+    "Doc. Docente",
+    "Nombre Estudiante",
+    "Doc. Estudiante",
+    "Fecha",
+    "Estado Tutoria",
+  ];
   return (
     <div className='bienestar'>
       <div className='bienestar_navbar'>
         <Navbar setTabSelected={setTabSelected} tabs={tabs} />
       </div>
-      <div className='container_bienestar'>
-        {tabSelected === "0" && <Observation />}
-        {tabSelected === "1" && <Remission />}
+      <>
+        {tabSelected === "0" && (
+          <div className='bienestar_container'>
+            <Observation />
+            <ButtonLogout />
+          </div>
+        )}
+        {tabSelected === "1" && (
+          <div className='bienestar_container'>
+            <Remission />
+            <ButtonLogout />
+          </div>
+        )}
         {tabSelected === "2" && (
-          <>
-            <h1> Asignar tutor </h1>
-            <p>Filtrar segun docente</p>
-            <button className='buttonHome' onClick={handleHistory}>
-              Ver Historial tutorias
-            </button>
-            <Tutor />
-          </>
+          <div className='bienestar_containerTutor'>
+            <div className='bienestar_containerTutor--history'>
+              <Tutorial data={Bienestar} />
+            </div>
+            <div className='bienestar_containerTutor--request'>
+              <h1> Asignar tutor </h1>
+              <Tutor />
+              <ButtonLogout />
+            </div>
+          </div>
         )}
         {tabSelected === "3" && (
-          <div className='bienestar_registro'>
+          <div className='bienestar_container'>
             <RegisterStudent />
             <RegisterTeacher />
             <RegisterBienestar />
+            <ButtonLogout />
           </div>
         )}
-        <ButtonLogout />
-      </div>
+      </>
     </div>
   );
 };

@@ -125,7 +125,7 @@ const Tutorial = ({ id, user, data }) => {
                             ).toLocaleDateString()}
                           </td>
                           <td>
-                            {student.estado_tutoria === 4
+                            {student.estado_tutoria === 5
                               ? "No realizada"
                               : "Realizada"}
                           </td>
@@ -209,7 +209,7 @@ const Tutorial = ({ id, user, data }) => {
                             ).toLocaleDateString()}
                           </td>
                           <td>
-                            {student.estado_tutoria === 4
+                            {student.estado_tutoria === 5
                               ? "No realizada"
                               : "Realizada"}
                           </td>
@@ -220,39 +220,52 @@ const Tutorial = ({ id, user, data }) => {
               )}
             </>
           ))}
-
-        {/* // : (
-        //   <>
-        //     {dataTutorialPending[0] && (
-        //       <tbody>
-        //         {dataTutorialPending[0]
-        //           .filter((std) =>
-        //             std.documento_estudiante.toString().includes(searcher)
-        //           )
-        //           .map((student, index) => (
-        //             <tr key={index}>
-        //               <>
-        //                 <td>{student.nombre_apellido_docente}</td>
-        //                 <td>{student.documento_docente}</td>
-        //                 <td>{student.nombre_apellido_estudiante}</td>
-        //                 <td>{student.documento_estudiante}</td>
-        //                 <td>{student.nombre_plan}</td>
-        //                 <td>{student.tipo_remision}</td>
-        //                 <td>{new Date(student.fecha).toLocaleDateString()}</td>
-        //                 <td>
-        //                   <Checkbox
-        //                     state={student.atendida}
-        //                     codigo={student.codigo_remision}
-        //                     id={index}
-        //                   />
-        //                 </td>
-        //               </>
-        //             </tr>
-        //           ))}
-        //       </tbody>
-        //     )}
-        //   </>
-        // )} */}
+        {data.length === 6 && (
+          <>
+            {dataTutorialHistory[0] && (
+              <tbody>
+                {dataTutorialHistory[0]
+                  .filter((std) =>
+                    std.nombre_docente.toString().includes(searcher)
+                  )
+                  .map(
+                    (
+                      {
+                        nombre_docente,
+                        apellido_docente,
+                        documento_docente,
+                        nombre_estudiante,
+                        apellido_estudiante,
+                        documento_estudiante,
+                        fecha_de_la_tutoria,
+                        estado_tutoria,
+                      },
+                      index
+                    ) => (
+                      <tr key={index}>
+                        <>
+                          <td>{nombre_docente + " " + apellido_docente}</td>
+                          <td>{documento_docente}</td>
+                          <td>
+                            {nombre_estudiante + " " + apellido_estudiante}
+                          </td>
+                          <td>{documento_estudiante}</td>
+                          <td>
+                            {new Date(fecha_de_la_tutoria).toLocaleDateString()}
+                          </td>
+                          <td>
+                            {estado_tutoria === 5
+                              ? "No realizada"
+                              : "Realizada"}
+                          </td>
+                        </>
+                      </tr>
+                    )
+                  )}
+              </tbody>
+            )}
+          </>
+        )}
       </table>
     </div>
   );
