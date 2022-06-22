@@ -92,12 +92,12 @@ export const getStudentTutorship = (teacher, setDataStudentTutorship) => {
     }
 }
 
-export const tutorshipAssignment = (documento_docente, documento_estudiante, fecha_tutoria, tipo_usuario) => {
+export const tutorshipAssignment = (documento_docente, documento_estudiante, fecha_tutoria, tipo_usuario, id_estado_tutoria) => {
     return async(dispatch) => {
-        const resp = await fetchSinToken(`manipularTutoria`, { documento_docente, documento_estudiante, fecha_tutoria, tipo_usuario }, 'POST');
-        console.log(resp)
+        const resp = await fetchSinToken(`manipularTutoria`, { documento_docente, documento_estudiante, fecha_tutoria, tipo_usuario, id_estado_tutoria }, 'POST');
+        console.log('tutorAsingment', resp)
         const body = await resp.json();
-        console.log(body)
+        console.log('tutorAsingment', body)
     }
 }
 
