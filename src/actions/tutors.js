@@ -1,3 +1,4 @@
+import Swal from "sweetalert2";
 import { fetchSinToken } from "../helpers/fetch"
 
 
@@ -97,6 +98,14 @@ export const tutorshipAssignment = (documento_docente, documento_estudiante, fec
         const resp = await fetchSinToken(`manipularTutoria`, { documento_docente, documento_estudiante, fecha_tutoria, tipo_usuario, id_estado_tutoria }, 'POST');
         console.log('tutorAsingment', resp)
         const body = await resp.json();
+        if (body.status == true){
+            Swal.fire({
+                title:
+                  "Tutoria agendada",
+                icon: "success",
+                confirmButtonColor: "#005068",
+              })
+        }
         console.log('tutorAsingment', body)
     }
 }
