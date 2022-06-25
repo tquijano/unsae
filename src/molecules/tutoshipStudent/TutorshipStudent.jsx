@@ -5,6 +5,7 @@ import "react-day-picker/dist/style.css";
 import { getTeacherTutorship, tutorshipAssignment } from "../../actions/tutors";
 import { format } from "date-fns";
 import es from 'date-fns/locale/es';
+import ButtonTutorship from "../../atoms/buttons/buttonTutorship/ButtonTutorship";
 
 const TutorshipStudent = () => {
     const dispatch = useDispatch();
@@ -48,7 +49,7 @@ const TutorshipStudent = () => {
 
     // console.log(dataTeacherTutorship[0]);
     return (
-        <div>
+        <div className="tutorship">
             {dataTeacherTutorship[0] ? (
                 <>
                     <select
