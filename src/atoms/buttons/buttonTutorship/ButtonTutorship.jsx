@@ -1,10 +1,10 @@
 import React from 'react'
 import './ButtonTutorship.scss'
 
-const ButtonTutorship = ({action}) => {
+const ButtonTutorship = ({action ,text}) => {
     return (
         <button className="buttonTutorship" type="submit" onClick={action}>
-            <span className="text">Asignar Tutoría</span>
+            <span className="text">{text}</span>
             <i className="icon">✓</i>
         </button>
     )
