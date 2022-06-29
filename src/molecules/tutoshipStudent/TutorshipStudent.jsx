@@ -75,9 +75,7 @@ const TutorshipStudent = () => {
                         onSelect={setDateSelect}
                         footer={footer}
                     />
-                    <button onClick={handleRequest}>
-                        Solicitar Tutoría
-                    </button>
+                    <ButtonTutorship text={'Solicitar Tutoría'} action={handleRequest}/>
                 </>
             ) : (
                 <></>

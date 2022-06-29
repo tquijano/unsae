@@ -19,11 +19,11 @@ const Students = () => {
       name: "menuStudent",
       value: "0",
     },
-    {
-      label: "Observaciones",
-      name: "menuStudent",
-      value: "1",
-    },
+    // {
+    //   label: "Observaciones",
+    //   name: "menuStudent",
+    //   value: "1",
+    // },
   ];
   const Student = ["Nombre Docente", "Fecha", "Estado Tutoria"];
 
