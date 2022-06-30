@@ -1,3 +1,4 @@
+import Swal from "sweetalert2";
 import { fetchSinToken } from "../helpers/fetch"
 
 

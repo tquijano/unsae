@@ -9,7 +9,6 @@ import Remission from "../../organism/remission/Remission";
 import Observation from "../../organism/ observation/Observation";
 import Navbar from "../../molecules/navbar/Navbar";
 import ButtonLogout from "../../atoms/buttons/buttonLogout/ButtonLogout";
-import { getHistoryTutor } from "../../actions/historyTutor";
 import Tutorial from "../../organism/turorials/Tutorial";
 
 const Bienestar = () => {
