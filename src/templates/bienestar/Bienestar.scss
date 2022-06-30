@@ -6,6 +6,11 @@
         flex-direction: column;
         padding: 3% 0;
         align-items: center;
+        &_registers {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 10px;
+        }
     }
     &_containerTutor {
         flex: 80%;
