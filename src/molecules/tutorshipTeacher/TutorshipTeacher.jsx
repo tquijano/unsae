@@ -27,7 +27,7 @@ const Tutorship = () => {
   };
 
   const [dateSelected, setDateSelect] = useState("");
-  
+
 
   const [tutorshipAssignmentDone, setTutorshipAssignmentDone] = useState([]);
 
@@ -53,9 +53,9 @@ const Tutorship = () => {
   // }
 
   const footer = dateSelected ? (
-    <p>{format(dateSelected, 'PPP', { locale: es })}</p>
+    <p><br />{format(dateSelected, 'PPP', { locale: es })}</p>
   ) : (
-    <p>Selecciona una fecha</p>
+    <p><br />Selecciona una fecha</p>
   );
 
   return (
@@ -92,7 +92,7 @@ const Tutorship = () => {
               </p>
             )
           }
-          <ButtonTutorship action={handleAssignment}/>
+          <ButtonTutorship text={'Asignar Tutoría'} action={handleAssignment} />
           {/* <button className="buttonTutorship" type="submit" onClick={handleAssignment}>
             <span className="text">Asignar Tutoría</span>
             <i className="icon">✓</i>

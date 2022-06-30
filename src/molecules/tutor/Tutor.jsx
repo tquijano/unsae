@@ -5,6 +5,8 @@ import {
   getDocentes,
   tutorAssignment,
 } from "../../actions/tutors";
+import ButtonTutorship from "../../atoms/buttons/buttonTutorship/ButtonTutorship";
+import './Tutor.scss'
 
 const Tutor = () => {
   const dispatch = useDispatch();
@@ -45,7 +47,7 @@ const Tutor = () => {
 
   // console.log(dataTutor[0]);
   return (
-    <div>
+    <div className="tutor">
       <p>Buscar Estudiante</p>
       <form onSubmit={handleSubmit}>
         <input
@@ -101,9 +103,7 @@ const Tutor = () => {
         El docente {teacherValue} se asignara al estudiante {studentValue} con
         el plan {planValue}
       </p>
-      <button className='buttonTutor' onClick={handleSend}>
-        Enviar informacion
-      </button>
+      <ButtonTutorship text={'Enviar Información'} action={handleSend}/>
     </div>
   );
 };

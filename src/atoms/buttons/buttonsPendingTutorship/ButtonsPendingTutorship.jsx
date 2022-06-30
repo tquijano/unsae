@@ -32,8 +32,8 @@ const ButtonsPendingTutorship = ({ documento_docente, documento_estudiante, fech
             )
         );
     }
+    
     return (
-
         <div className='buttonsPendingTutorship'>
             <p>{estado_tutoria} <br/>Desea Aceptarla?</p>
             <div className='buttonsPendingTutorship_container'>

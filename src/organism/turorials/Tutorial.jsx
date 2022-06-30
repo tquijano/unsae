@@ -167,11 +167,11 @@ const Tutorial = ({ id, user, data }) => {
                             <td>
                               {estado === "Aceptada" ? (
                                 <>
-                                  {estado}
                                   <ButtonState
                                     id={id}
                                     doc={documento}
                                     date={fecha_de_la_tutoria}
+                                    estado_tutoria={estado}
                                   />
                                 </>
                               ) : (
@@ -184,7 +184,6 @@ const Tutorial = ({ id, user, data }) => {
                                   />
                                 </>
                               )}
-
                             </td>
                           </>
                         </tr>

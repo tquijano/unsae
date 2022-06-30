@@ -4,11 +4,16 @@ import "./GInfoConceptual.scss";
 const GInfoConceptual = () => {
   return (
     <div className='gInfoConceptual-container'>
-      <h1>Links de Referencia</h1>
+      <h1>LINKS DE REFERENCIA</h1>
       <a href='https://micampus.unal.edu.co/'>Campus Vitual</a>
+      <br />
+      <br />
       <a href='https://bogota.unal.edu.co/calendario-academico/'>
         Calendario Academico
       </a>
+      <br />
+      <br />
+
       <h1>MARCO CONCEPTUAL</h1>
       <p>
         Según el Acuerdo 028 de 2010: “ El Sistema de Acompañamiento Estudiantil

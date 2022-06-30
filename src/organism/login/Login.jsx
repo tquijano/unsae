@@ -27,7 +27,7 @@ const Login = () => {
     <div className='login'>
       <h1 className='login_title'> Inicio de sesión </h1>
       <p className='login_text'>
-        QInicie sesión con su nombre de usuario y la contraseña del correo
+        Inicie sesión con su nombre de usuario y la contraseña del correo
         institucional.
       </p>
       <form className='form' onSubmit={handleLogin}>
@@ -36,6 +36,7 @@ const Login = () => {
             {" "}
             Usuario{" "}
           </label>
+
           <input
             id='user'
             type='text'
@@ -46,11 +47,11 @@ const Login = () => {
             onChange={handleInputChange}
             required
           />
+          <br />
         </div>
         <div className='form_group'>
           <label htmlFor='password' className='form_label'>
-            {" "}
-            Contraseña{" "}
+            Contraseña
           </label>
           <input
             id='password'
